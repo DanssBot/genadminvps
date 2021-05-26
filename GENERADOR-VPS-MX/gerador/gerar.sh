@@ -298,3 +298,151 @@ rm $KEYDIR/*.x.c &> /dev/null
 rm ${KEYDIR}/${LIST}
   for arqx in `ls $SCPT_DIR`; do
   cp ${SCPT_DIR}/$arqx ${KEYDIR}/$arqx
+  echo "${arqx}" >> ${KEYDIR}/${LIST}
+  rm ${SCPT_DIR}/*.x.c &> /dev/null
+  rm $KEYDIR/*.x.c &> /dev/null
+  done
+ arqsx=$(ofus "$IP:8888/${keys[$value]}/$LIST")
+ echo -e "\033[1;33m[KEY]: $arqsx \033[1;32m(ACTUALIZADA!)\033[0m"
+ read -p "Enter"
+ rm ${SCPT_DIR}/*.x.c &> /dev/null
+ }
+}
+remover_key () {
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+clear
+msg -bar
+echo "[$i] Retornar"
+echo -e "$BARRA"
+keys="$keys retorno"
+let i++
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+if [[ ! -e ${DIR}/${arqs}/used.date ]]; then
+echo -e "\033[1;32m[$i] \033[1;33m$arqsx\n                   \033[1;96m($(cat ${DIR}/${arqs}.name))\033[1;32m (ACTIVA)\033[0m\n$BARRA"
+else
+echo -e "\033[1;31m[$i] $arqsx\n       ($(cat ${DIR}/${arqs}.name))\033[1;33m ($(cat ${DIR}/${arqs}/used.date) IP: $(cat ${DIR}/${arqs}/used))\033[0m\n$BARRA"
+fi
+keys="$keys $arqs"
+let i++
+done
+keys=($keys)
+while [[ -z ${keys[$value]} || -z $value ]]; do
+read -p "Elija cual eliminar: " -e -i 0 value
+done
+[[ -d "$DIR/${keys[$value]}" ]] && rm -rf $DIR/${keys[$value]}* || return
+}
+remover_key_usada () {
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+ if [[ -e ${DIR}/${arqs}/used.date ]]; then #KEY USADA
+  if [[ $(ls -l -c ${DIR}/${arqs}/used.date|cut -d' ' -f7) != $(date|cut -d' ' -f3) ]]; then
+  rm -rf ${DIR}/${arqs}*
+  echo -e "\033[1;31m[KEY]: $arqsx \033[1;32m(ELIMINADA!)\033[0m" 
+  else
+  echo -e "\033[1;32m[KEY]: $arqsx \033[1;32m(AÚN VÁLIDA!)\033[0m"
+  fi
+ else
+ echo -e "\033[1;32m[KEY]: $arqsx \033[1;32m(AÚN VÁLIDA!)\033[0m"
+ fi
+let i++
+done
+msg -bar
+echo -ne "\033[0m" && read -p "Enter"
+}
+start_gen () {
+unset PIDGEN
+PIDGEN=$(ps aux|grep -v grep|grep "http-server.sh")
+if [[ ! $PIDGEN ]]; then
+screen -dmS generador /bin/http-server.sh -start
+# screen -dmS generador /bin/http-server-pass.sh -start
+else
+killall http-server.sh
+# killall http-server-pass.sh
+fi
+}
+message_gen () {
+read -p "NUEVO MENSAJE: " MSGNEW
+echo "$MSGNEW" > ${SCPT_DIR}/message.txt
+msg -bar
+}
+rmv_iplib () {
+echo -e "SERVIDORES DE KEY ACTIVOS!"
+rm /var/www/html/newlib && touch /var/www/html/newlib
+rm ${SCPT_DIR}/*.x.c &> /dev/null
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+if [[ $(cat ${DIR}/${arqs}.name|grep GERADOR) ]]; then
+var=$(cat ${DIR}/${arqs}.name)
+ip=$(cat ${DIR}/${arqs}/keyfixa)
+echo -ne "\033[1;31m[USUARIO]:(\033[1;32m${var%%[*}\033[1;31m) \033[1;33m[GERADOR]:\033[1;32m ($ip)\033[0m"
+echo "$ip" >> /var/www/html/newlib && echo -e " \033[1;36m[ATUALIZADO]"
+fi
+done
+echo "104.238.135.147" >> /var/www/html/newlib
+msg -bar
+read -p "Enter"
+}
+atualizar_geb () {
+wget -O $HOME/instger.sh https://raw.githubusercontent.com/diesel09/Generador_Gen_VPS-MX/master/instgerador.sh &>/dev/null
+chmod +x $HOME/instger.sh
+cd $HOME
+./instger.sh
+rm $HOME/instger.sh &>/dev/null
+}
+links_inst  () {
+msg -bar
+echo -e "\e[97m\033[1;32m   =====>>â–ºâ–º INSTALACION SCRIPT VPSâ€¢MX â—„â—„<<=====   \033"
+msg -bar
+echo -e "wget https://raw.githubusercontent.com/diesel09/SCRIPT8.0/master/instalscript.sh &> /dev/null; chmod 777 instalscript.sh* && ./instalscript.sh*"
+msg -bar
+read -p "Enter para Finalizar"
+}
+meu_ip
+unset PID_GEN
+PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
+[[ ! $PID_GEN ]] && PID_GEN="\033[1;31moff" || PID_GEN="\033[1;32monline"
+echo -e "\033[1;37mDirectorio de archivos sincronizados \033[1;31m${SCPT_DIR}\033[0m"
+msg -bar
+echo -e "\033[1;32m[1] \033[1;31m> \033[1;37mGENERAR 1 KEY ALEATORIA"
+echo -e "\033[1;32m[2] \033[1;31m> \033[1;37mELIMINAR/MIRAR KEYS"
+echo -e "\033[1;32m[3] \033[1;31m> \033[1;37mLIMPIAR REGISTRO DE KEYS USADAS"
+echo -e "\033[1;32m[4] \033[1;31m> \033[1;37mALTERAR ARCHIVOS DE KEY BASICA"
+echo -e "\033[1;32m[5] \033[1;31m> \033[1;37mENCENDER/APAGAR GENERADOR $PID_GEN\033[0m"
+echo -e "\033[1;32m[6] \033[1;31m> \033[1;37mVER LINKS DE INSTALACION"
+echo -e "\033[1;32m[7] \033[1;31m> \033[1;37mCAMBIAR CREDITOS"
+echo -e "\033[1;32m[8] \033[1;31m> \033[1;37mVER REGISTRO"
+echo -e "\033[1;32m[9] \033[1;31m> \033[1;37m[!] \033[1;32mACTUALIZAR GENERADOR"
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mSALIR DEL SCRIPT"
+msg -bar
+while [[ ${varread} != @([0-9]) ]]; do
+read -p "Opcion: " varread
+done
+msg -bar
+if [[ ${varread} = 0 ]]; then
+exit
+elif [[ ${varread} = 1 ]]; then
+gerar_key
+elif [[ ${varread} = 2 ]]; then
+remover_key
+elif [[ ${varread} = 3 ]]; then
+remover_key_usada
+elif [[ ${varread} = 4 ]]; then
+mudar_instacao
+elif [[ ${varread} = 5 ]]; then
+start_gen
+elif [[ ${varread} = 6 ]]; then
+links_inst
+elif [[ ${varread} = 7 ]]; then
+message_gen
+elif [[ ${varread} = 8 ]]; then
+echo -ne "\033[1;36m"
+cat /etc/gerar-sh-log 2>/dev/null || echo "NINGUN REGISTRO EN ESTE MOMENTO"
+echo -ne "\033[0m" && read -p "Enter"
+elif [[ ${varread} = 9 ]]; then
+atualizar_geb
+fi
+/usr/bin/gerar.sh
