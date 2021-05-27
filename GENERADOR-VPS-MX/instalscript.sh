@@ -27,7 +27,7 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
 }
 clear
  msg -bar2
- msg -ama "     [ SCRIPT \033[1;97m ADMIN VPS\033[1;33m ]"
+ msg -ama "               [ SCRIPT \033[1;97m ADMIN VPS\033[1;33m ]"
  echo -e  "\033[1;97m               EJECUTANDO ACTUALIZADOR  \033[1;34m "
  msg -bar2
 ## Script name
