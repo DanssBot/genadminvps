@@ -733,11 +733,12 @@ export -f fun_ip
 clear
 #########VISUALIZACION DE MENU
 msg -bar
-echo -e "\e[97m\033[1;41m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\e[97m\033[1;41m       =====>>►► PANEL • ADMIN VPS • ◄◄<<=====       \033[1;37m"
 msg -bar
 msg -bra "   VERSION INSTALADA: \033[1;31m[\033[1;32m $vesaoSCT\033[1;97m"
 #[[ -e ${SCPdir}/key.txt ]] && msg -bar && msg -bra " KEY: \033[1;93m$(cat ${SCPdir}/key.txt)"
 [[ -e ${SCPdir}/message.txt ]] && msg -bar && msg -bra " RESELLER:\033[1;96m $(cat ${SCPdir}/message.txt) "
+msg -bra " CONTACTO: \033[1;31m[\033[1;32m +52 9842147259 \033[1;31m] "
 msg -bar
 echo -e "\033[1;31m     CPU: \033[1;37mNo.DE NUCLEOS :\033[1;32m $_core \033[1;31m USO DE CPU: \033[1;32m$_usop "
 echo -e "\033[1;31m     RAM: \033[1;37m TOTAL: \033[1;32m$ram1 \033[1;31m    USO DE RAM: \033[1;32m$_usor"
@@ -905,15 +906,10 @@ echo -ne " \033[1;93m          CREDITOS Y REGISTRO DE CAMBIOS\n"
 msg -bar
 [[ -e ${SCPdir}/message.txt ]] && msg -bra " RESELLER AUTORIZADO: \n\033[1;96m $(cat ${SCPdir}/message.txt) "
 [[ -e ${SCPdir}/key.txt ]] && msg -bra " KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)"
+msg -bra " CONTACTO: \033[1;31m[\033[1;32m +52 9842147259 \033[1;31m] "
 msg -bar
-echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 8.2\n"
-echo -ne "- Nuevo diseño de BOT Manager\n"
-echo -ne "- Nuevo diseño Instalacion de BOT Manager\n"
-echo -ne "- Nuevos comandos en el BOT Manager\n"
-echo -ne "- Cambios de Barras == a Lisas ———\n"
-echo -ne "- Actulizacion de Libreria de OpenVPN\n"
-echo -ne "- Dropbear Actulizado\n"
-echo -ne "- Actulizacion de fai2ban v0.11.2\n"
+echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 1.5\n"
+echo -ne "- Cambio del panel\n"
 msg -bar
 }
 # NOVO SISTEMA DE MENUS
