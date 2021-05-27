@@ -770,7 +770,7 @@ sed -i "65d" /bin/monitor.sh
 sed -i '65i EstadoServicio apache2' /bin/monitor.sh
 }
 msg -bar
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► PANEL •ADMIN VPS• ◄◄<<=====       \033[1;37m"
 msg -bar
 echo -e "\033[1;32m          MONITOR DE SERVICIONS PRINCIPALES"
 
