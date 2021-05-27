@@ -82,8 +82,7 @@ rm $HOME/lista-arq
 sed -i -e 's/\r$//' /usr/bin/gerar.sh
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 echo "/usr/bin/gerar.sh" > /usr/bin/gerar && chmod +x /usr/bin/gerar
-echo -e "\033[1;33m Perfeito, Use o Comando \033[1;31mgerar.sh o gerar \033[1;33mpara Gerenciar as Suas Keys e
- Atualizar a Base do servidor"
+echo -e "\033[1;33m Use el Comando \033[1;31mgerar.sh o gerar \033[1;33mpara generar las Keys"
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 } || {
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
