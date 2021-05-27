@@ -55,8 +55,12 @@ function_verify () {
   echo -e "\033[1;31m=====================================================\n\n\n"
   [[ -d /etc/SCRIPT ]] && rm -rf /etc/SCRIPT
   exit 1
+  } || {
+  ### INTALAR VERCION DE SCRIPT
+  v1=$(curl -sSL "https://raw.githubusercontent.com/diesel09/Generador_Gen_VPS-MX/master/Vercion")
+  echo "$v1" > /etc/versin_script
   }
-  }
+}
 meu_ip
 echo -e "\033[1;33mInstalando Archivos... "
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
