@@ -1,8 +1,8 @@
 #!/bin/bash
 IVAR="/etc/http-instas"
 SCPT_DIR="/etc/SCRIPT"
-SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RpZXNlbDA5L2dlbm14OC4zL21hc3Rl
-ci9WUFMtTVgvTW9kdWxvcw=="
+SCPresq="=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RpZXNlbDA5L2dlbm14OC4zL21hc3Rl
+ci9WUFMtTVgvbW9kdWxvcy8=
 SUB_DOM='base64 -d'
 rm $(pwd)/$0
 ofus () {
