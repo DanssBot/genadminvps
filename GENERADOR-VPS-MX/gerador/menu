@@ -75,7 +75,7 @@ SEMCOR='\e[0m'
 canbio_color () {
 clear
 msg -bar2
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL ADMIN VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► PANEL ADMIN VPS•MX ◄◄<<=====       \033[1;37m"
 msg -bar
 msg -ama "   Cambiar Colores del Panel \033[1;31m[\033[1;32m VPS-MX \033[1;97m #MOD MX# \033[1;31m]"
 msg -bar2
@@ -170,7 +170,7 @@ echo "$(echo ${idioma[$selection]}|cut -d' ' -f1)" > ${SCPidioma}
 mine_port () {
 clear
 msg -bar
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► PANEL •ADMIN VPS• ◄◄<<=====       \033[1;37m"
 msg -bar
 echo -e "\033[1;93m      INFORMACION DEL SISTEMA Y PUERTOS ACTIVOS"
 msg -bar2
@@ -575,7 +575,7 @@ clear
 
 tput cuu1 && tput dl1
 msg -bar2
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►►PANEL •ADMIN VPS• ◄◄<<=====       \033[1;37m"
 msg -bar
 msg -ama "                 MENU DE HERRAMIENTAS"
 msg -bar2
@@ -672,7 +672,7 @@ done <<< "$portas_var"
 menu_inst () {
 clear
 msg -bar
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► PANEL •ADMIN VPS• ◄◄<<=====       \033[1;37m"
 msg -bar
 export -f fun_eth
 export -f fun_bar
