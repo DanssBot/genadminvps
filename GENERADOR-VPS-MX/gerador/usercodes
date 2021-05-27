@@ -1041,7 +1041,7 @@ desbloqueo_auto
 exit
 fi
 [[ -z ${VERY2} ]] && desbloqueo="\033[1;31m[DESACTIVADO]" || desbloqueo="\033[1;32m[ACTIVO]"
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► PANEL •ADMIN VPS• ◄◄<<=====       \033[1;37m"
 msg -bar
 msg -ama "   MENU ADMINISTRACION DE USUARIOS SSL/SSH/DROPBEAR"
 msg -bar
