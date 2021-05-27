@@ -46,6 +46,16 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
 echo "$IP" > /usr/bin/vendor_code
 }
+function_verify () {
+  permited=$(curl -sSL "https://raw.githubusercontent.com/diesel09/Generador_Gen_VPS-MX/master/Control-IP")
+  [[ $(echo $permited|grep "${IP}") = "" ]] && {
+  echo -e "\n\n\n\033[1;31m====================================================="
+  echo -e "\033[1;31m       ¡LA IP $(wget -qO- ipv4.icanhazip.com) NO ESTA AUTORIZADA!"
+  echo -e "\033[1;31m                CONTACTE A @vpspremium_com_mx"
+  echo -e "\033[1;31m=====================================================\n\n\n"
+  [[ -d /etc/SCRIPT ]] && rm -rf /etc/SCRIPT
+  exit 1
+  }
 meu_ip
 echo -e "\033[1;33mInstalando Archivos... "
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
