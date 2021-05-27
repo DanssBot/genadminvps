@@ -175,7 +175,7 @@ sleep 7s
 clear
 }
 msg -bar2
-echo -e "\033[1;97m  ¿PRECENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
+echo -e "\033[1;97m  ¿PRESENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
 msg -bar2
 echo -e "\033[1;32m 1- Escoja:(N) No. Para Instalacion Normal"
 echo -e "\033[1;31m 2- Escoja:(S) Si. Saltaron errores."
