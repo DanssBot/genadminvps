@@ -395,9 +395,9 @@ rm $HOME/instger.sh &>/dev/null
 }
 links_inst  () {
 msg -bar
-echo -e "\e[97m\033[1;32m   =====>>â–ºâ–º INSTALACION SCRIPT VPSâ€¢MX â—„â—„<<=====   \033"
+echo -e "\e[97m\033[1;32m =====>> INSTALACION SCRIPT - ADMIN VPS <<===== \033"
 msg -bar
-echo -e "wget https://raw.githubusercontent.com/diesel09/SCRIPT8.0/master/instalscript.sh &> /dev/null; chmod 777 instalscript.sh* && ./instalscript.sh*"
+echo -e "apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/AizenNetFreeMx/adminVps1.5/main/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*"
 msg -bar
 read -p "Enter para Finalizar"
 }
@@ -412,7 +412,7 @@ echo -e "\033[1;32m[2] \033[1;31m> \033[1;37mELIMINAR/MIRAR KEYS"
 echo -e "\033[1;32m[3] \033[1;31m> \033[1;37mLIMPIAR REGISTRO DE KEYS USADAS"
 echo -e "\033[1;32m[4] \033[1;31m> \033[1;37mALTERAR ARCHIVOS DE KEY BASICA"
 echo -e "\033[1;32m[5] \033[1;31m> \033[1;37mENCENDER/APAGAR GENERADOR $PID_GEN\033[0m"
-echo -e "\033[1;32m[6] \033[1;31m> \033[1;37mVER LINKS DE INSTALACION"
+echo -e "\033[1;32m[6] \033[1;31m> \033[1;37mVER LINK DE INSTALACION"
 echo -e "\033[1;32m[7] \033[1;31m> \033[1;37mCAMBIAR CREDITOS"
 echo -e "\033[1;32m[8] \033[1;31m> \033[1;37mVER REGISTRO"
 echo -e "\033[1;32m[9] \033[1;31m> \033[1;37m[!] \033[1;32mACTUALIZAR GENERADOR"
