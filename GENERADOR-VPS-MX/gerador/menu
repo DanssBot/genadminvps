@@ -75,7 +75,7 @@ SEMCOR='\e[0m'
 canbio_color () {
 clear
 msg -bar2
-echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
+echo -e "\033[1;37m       =====>>►► 🐲 PANEL ADMIN VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
 msg -bar
 msg -ama "   Cambiar Colores del Panel \033[1;31m[\033[1;32m VPS-MX \033[1;97m #MOD MX# \033[1;31m]"
 msg -bar2
