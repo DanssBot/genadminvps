@@ -20,7 +20,7 @@ SCRIPT_NAME=vpsmxup
 
 ## Title and graphics
 msg -bar2
-echo "         VPS-MX - $(date)"
+echo "         ADMIN VPS - $(date)"
 msg -bar2
 sleep 5s
 
@@ -194,8 +194,8 @@ lsb_release -d
 printTitle "Tiempo que tomó Actulizacion de Repositorios de UBUNTU"
 echo "$((($(date +%s)-$TIME_START)/60)) min."
 msg -bar2
-echo -e "\033[93m         -- ACTULIZACION DE UBUNTU COMPLETA -- "
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/GENERADOR-VPS-MX/Install/VPS-MX.sh -O /usr/bin/VPS-MX &> /dev/null
+echo -e "\033[93m         -- ACTUALIZACION DE UBUNTU COMPLETA -- "
+wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/VPS-MX.sh -O /usr/bin/VPS-MX &> /dev/null
 chmod +x /usr/bin/VPS-MX
 if [ "$REBOOT" = "1" ]; then
 	printTitle "        SU VPS SE REINICIARA EN 20 SEGUNDOS           "
@@ -208,7 +208,7 @@ if [ "$REBOOT" = "1" ]; then
 	reboot
 fi
 
-printTitle "Se procede a Instalar VPS-MX"
+printTitle "Se Instalara el script ADMIN VPS"
 echo $(date)
 msg -bar2
 sleep 7s
