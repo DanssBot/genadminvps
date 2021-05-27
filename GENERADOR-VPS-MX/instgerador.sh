@@ -56,6 +56,7 @@ function_verify () {
   [[ -d /etc/SCRIPT ]] && rm -rf /etc/SCRIPT
   exit 1
   }
+  }
 meu_ip
 echo -e "\033[1;33mInstalando Archivos... "
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
