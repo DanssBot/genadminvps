@@ -37,7 +37,7 @@ local COL=0
 for number in $(cat $colors); do
 case $number in
 1)COLOR[$COL]='\033[1;37m';;
-2)COLOR[$COL]='\e[31m';;
+2)COLOR[$COL]='\e[35m';;
 3)COLOR[$COL]='\e[32m';;
 4)COLOR[$COL]='\e[33m';;
 5)COLOR[$COL]='\e[34m';;
