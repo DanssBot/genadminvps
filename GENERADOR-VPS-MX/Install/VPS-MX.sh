@@ -193,7 +193,7 @@ MIP2=$(wget -qO- ifconfig.me)
 function_verify () {
   ### INTALAR VERCION DE SCRIPT
   v1=$(curl -sSL "https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/Vercion")
-  echo "$v1" > /etc/versin_script
+  echo "$v1" > /etc/versin_script_new
   [[ ! -e /usr/local/lib/lsystembin2 ]] && touch /usr/local/lib/lsystembin2
  
 }
@@ -243,7 +243,7 @@ echo 'echo -e "\033[92m        VERSION : $ver "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
 echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA:  menu / adm "'>> .bashrc
 echo 'ver="$(cat /etc/versin_script)" '>> .bashrc
-#echo 'wget -O /etc/versin_script_new https://www.dropbox.com/s/xi3kfu39eawuvoc/Vercion &>/dev/null'>> .bashrc
+echo 'wget -O /etc/versin_script https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/Vercion &>/dev/null'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo 'echo -e "	\e[44;1;37mNombre del Servidor\e[0m : \e[1;33m $HOSTNAME \e[0m"' >> .bashrc
 echo 'echo -e "	\e[44;1;37mFecha del Servidor\e[0m : \e[1;33m $DATE \e[0m"' >> .bashrc
