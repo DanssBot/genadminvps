@@ -33,5 +33,6 @@ Unlock-Pass-VULTR.sh
 usercodes
 utils.sh
 v2ray.sh
+trojanserver.sh
 gerar.sh
 http-server.py
