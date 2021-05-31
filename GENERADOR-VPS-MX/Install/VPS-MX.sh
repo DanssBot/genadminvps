@@ -239,10 +239,10 @@ echo 'echo "" '>> .bashrc
 echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
-echo 'echo -e "\033[92m        VERSION : $vesaoSCT "'>> .bashrc
+echo 'echo -e "\033[92m        VERSION : $ver "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
 echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA:  menu / adm "'>> .bashrc
-echo 'ver="$(cat /etc/versin_script_new)" '>> .bashrc
+echo 'ver="$(cat /etc/versin_script)" '>> .bashrc
 #echo 'wget -O /etc/versin_script_new https://www.dropbox.com/s/xi3kfu39eawuvoc/Vercion &>/dev/null'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo 'echo -e "	\e[44;1;37mNombre del Servidor\e[0m : \e[1;33m $HOSTNAME \e[0m"' >> .bashrc
