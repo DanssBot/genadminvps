@@ -220,6 +220,9 @@ V2R+="$Port ";;
 badvpn-ud)
 [[ -z $BAD ]] && local BAD="\033[1;31m BADVPN: \033[1;32m"
 BAD+="$Port ";;
+trojan)
+[[ -z $TRO ]] && local TRO="\033[1;31m TROJAN SERVER: \033[1;32m"
+TRO+="$Port ";;
 esac
 done <<< "${portasVAR}"
 #UDP
@@ -248,6 +251,7 @@ done <<< "${portasVAR}"
 [[ ! -z $APC ]] && echo -e $APC
 [[ ! -z $OVPN ]] && echo -e $OVPN
 [[ ! -z $BAD ]] && echo -e $BAD
+[[ ! -z $TRO ]] && echo -e $TRO
 msg -bar2
 
 }
