@@ -378,6 +378,7 @@ updatedb
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
    msg -ama "$(source trans -b pt:${id} "GRACIAS POR ADQUIRIR TU SERIAL"|sed -e 's/[^a-z -]//ig'): ADMIN VPS\033[1;31m[]"
+   [[ -e ${SCPdir}/key.txt ]] && msg -bra "SU KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)" 
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
