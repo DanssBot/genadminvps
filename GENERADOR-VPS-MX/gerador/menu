@@ -647,7 +647,7 @@ let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PANEL WEB SSH (Ubuntu 14)          $dev2"
 script[$Numb]="panelweb.sh"
 let Numb++
-echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verd "AGREGAR HERRAMIENTAS            $ofc"
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verd "AGREGAR HERRAMIENTAS           $ofc"
 script[$Numb]="agregar"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verm2 "REMOVER HERRAMIENTAS           $ofc"
