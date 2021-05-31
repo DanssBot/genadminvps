@@ -896,8 +896,8 @@ echo "${SSH2}"|bc > /etc/newadm/ger-user/SSH20.log
 SSH3="$(less /etc/newadm/ger-user/SSH20.log)"
 SSH4="$(echo $SSH3)"
 #MONITOR DE CUENTAS ACTIVAS SSRR
-user_info=$(cd /usr/local/shadowsocksr &> /dev/null  && python mujson_mgr.py -1 ) 
-user_total=$(echo "${user_info}"|wc -1)
+user_info=$(cd /usr/local/shadowsocksr &> /dev/null  && python mujson_mgr.py -2 ) 
+user_total=$(echo "${user_info}"|wc -2)
 on="\033[1;92m[ON]" && off="\033[1;31m[OFF]"
 [[ $(ps x | grep badvpn | grep -v grep | awk '{print $1}') ]] && badvpn=$on || badvpn=$off
 echo -e "\033[1;97m   SSH REG:\033[1;92m $SSH4 \033[1;97m   SS-SSRR REG:\033[1;92m $user_total \033[1;97m   BADVPN: $badvpn"
