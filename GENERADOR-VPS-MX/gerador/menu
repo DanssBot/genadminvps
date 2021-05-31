@@ -537,7 +537,7 @@ case $1 in
 "sockspy.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "SOCKS PYTHON --------------------- $(pid_inst python)";;
 "v2ray.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 "==>>") " && msg -azu "V2RAY ---------------------------- $(pid_inst v2ray)";; 
 "budp.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "BADVPN-(UDP:7300) ---------------- $(pid_inst badvpn)";;
-"trojanserver.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "TROJAN SERVER $(pid_inst trojan)";;
+"trojanserver.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 "==>>") " && msg -azu "TROJAN SERVER -------------------- $(pid_inst trojan)";;
 
 "paysnd.sh")return 1;;
 "ultrahost")return 1;;
@@ -599,7 +599,7 @@ script[$Numb]="apacheon.sh"
 echo -e "\033[1;93m-----------------------SEGURIDAD---------------------"
 #PROTECION
 let Numb++
-echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "FIREWALL PARA VPS VPS•MX            $ofc"
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "FIREWALL BLOCK TORRENT              $ofc"
 script[$Numb]="blockBT.sh"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "FAIL2BAN PROTECION                  $ofc"
@@ -644,7 +644,7 @@ let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PRUEBA DE VELOCIDAD                $ofc"
 script[$Numb]="speed.sh"
 let Numb++
-echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PANEL WEB SSH (Ubuntu 14)                $dev2"
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PANEL WEB SSH (Ubuntu 14)          $dev2"
 script[$Numb]="panelweb.sh"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verd "AGREGAR HERRAMIENTAS            $ofc"
