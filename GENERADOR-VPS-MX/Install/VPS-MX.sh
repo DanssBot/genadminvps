@@ -239,7 +239,7 @@ echo 'echo "" '>> .bashrc
 echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
-echo 'echo -e "\033[92m        VERSION : $ver "'>> .bashrc
+#echo 'echo -e "\033[92m        VERSION : $ver "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
 echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA:  menu / adm "'>> .bashrc
 echo 'ver="$(cat /etc/versin_script)" '>> .bashrc
