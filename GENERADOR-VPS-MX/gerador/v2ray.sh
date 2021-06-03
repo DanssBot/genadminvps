@@ -193,6 +193,40 @@ linesss=$(cat /etc/RegV2ray | wc -l)
 fi
 msg -bar
 }
+stats () {
+msg -ama "$(fun_trans "Estadisticas de Consumo")!"
+msg -bar
+v2ray stats
+msg -bar
+msg -ne "Enter Para Continuar" && read enter
+${SCPinst}/v2ray.sh
+}
+limpiador_activador () {
+unset PIDGEN
+PIDGEN=$(ps aux|grep -v grep|grep "limv2ray")
+if [[ ! $PIDGEN ]]; then
+screen -dmS limv2ray watch -n 21600 limv2ray
+else
+#killall screen
+screen -S limv2ray -p 0 -X quit
+fi
+unset PID_GEN
+PID_GEN=$(ps x|grep -v grep|grep "limv2ray")
+[[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DESACTIVADO ] " || PID_GEN="\e[92m [ ACTIVADO ] "
+statgen="$(echo $PID_GEN)"
+clear 
+clear
+msg -bar
+msg -tit
+msg -ama "          ELIMINAR EXPIRADOS | UUID V2RAY"
+msg -bar
+echo ""
+echo -e "                    $statgen " 
+echo "" 						
+msg -bar
+msg -ne "Enter Para Continuar" && read enter
+${SCPinst}/v2ray.sh
+}
 msg -ama "$(fun_trans "MENU V2RAY")"
 msg -bar
 echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "INSTALAR V2RAY") "
@@ -204,6 +238,8 @@ echo -ne "\033[1;32m [6] > " && msg -azu "$(fun_trans "DESINTALAR V2RAY")"
 echo -ne "\033[1;32m [7] > " && msg -azu "$(fun_trans "AGREGAR USUARIO UUID")"
 echo -ne "\033[1;32m [8] > " && msg -azu "$(fun_trans "ELIMINAR USUARIO UUID")"
 echo -ne "\033[1;32m [9] > " && msg -azu "$(fun_trans "MOSTAR USUARIOS REGISTRADOS")"
+echo -ne "\033[1;32m [10] > " && msg -azu "ESTADISTICAS DE CONSUMO "
+echo -ne "\033[1;32m [11] > " && msg -azu "LIMPIADOR DE EXPIRADOS ------- $statgen\n$(msg -bar)"
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 while [[ ${arquivoonlineadm} != @(0|[1-9]) ]]; do
@@ -220,6 +256,8 @@ case $arquivoonlineadm in
 7)addusr;;
 8)delusr;;
 9)mosusr_kk;;
+10)stats;;
+11)limpiador_activador;;
 0)exit;;
 esac
 msg -bar
