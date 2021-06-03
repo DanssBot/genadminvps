@@ -922,6 +922,8 @@ msg -bar
 [[ -e ${SCPdir}/key.txt ]] && msg -bra " KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)"
 msg -bra " CONTACTO: \033[1;31m[\033[1;32m +52 9842147259 \033[1;31m] "
 msg -bar
+echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 1.7\n"
+echo -ne "- Se Modifico el menu principal con acceso rapido al v2ray\n"
 echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 1.6\n"
 echo -ne "- Se Agrego Trojan Server\n"
 echo -ne " "
@@ -931,7 +933,7 @@ msg -bar
 }
 # NOVO SISTEMA DE MENUS
 msg -bar
-menu_func "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR" "ADMINISTRAR CUENTAS | SS/SSRR"   "\033[1;100mINSTALADORES DE PROTOCOLOS" "PUERTOS ACTIVOS" "HERRAMIENTAS y EXTRAS" "CAMBIAR COLORES DEL PANEL" "MONITOR DE PROTOCOLOS --------> ${monitorservi}" " AUTO INICIAR SCRIPT ----------> $AutoRun " "-vd ACTUALIZAR PANEL" 
+menu_func "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR" "ADMINISTRAR CUENTAS | SS/SSRR" "ADMINISTRAR CUENTAS | V2RAY"   "\033[1;100mINSTALADORES DE PROTOCOLOS" "PUERTOS ACTIVOS" "HERRAMIENTAS y EXTRAS" "CAMBIAR COLORES DEL PANEL" "MONITOR DE PROTOCOLOS --------> ${monitorservi}" " AUTO INICIAR SCRIPT ----------> $AutoRun " "-vd ACTUALIZAR PANEL" 
 echo -ne "$(msg -verd " [10]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;31m ❌ DESINSTALAR PANEL ❌ "
 msg -bar
 echo -ne "$(msg -verd " [11]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;97m CREDITOS "
@@ -942,15 +944,16 @@ selection=$(selection_fun 11)
 case ${selection} in
 1)${SCPusr}/usercodes "${idioma}" ;;
 2)${SCPinst}/C-SSR.sh ;;
-3)menu_inst;;
-4)mine_port;;
-5)ferramentas_fun;;
-6)canbio_color;;
-7)monservi_fun;;
-8)fun_autorun;;
-9)atualiza_fun;;
-10)remove_script;;
-11)creditoss ;;
+3)${SCPinst}/v2ray.sh ;;
+4)menu_inst;;
+5)mine_port;;
+6)ferramentas_fun;;
+7)canbio_color;;
+8)monservi_fun;;
+9)fun_autorun;;
+10)atualiza_fun;;
+11)remove_script;;
+12)creditoss ;;
 0)cd $HOME && exit 0;;
 esac
 msg -ne "$(fun_trans "Enter Para Continuar")" && read enter
