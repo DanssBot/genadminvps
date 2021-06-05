@@ -242,8 +242,8 @@ echo -ne "\033[1;32m [10] > " && msg -azu "ESTADISTICAS DE CONSUMO "
 echo -ne "\033[1;32m [11] > " && msg -azu "LIMPIADOR DE EXPIRADOS ------- $statgen\n$(msg -bar)"
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
-while [[ ${arquivoonlineadm} != @(0|[1-11]) ]]; do
-read -p "[0-11]: " arquivoonlineadm
+while [[ ${arquivoonlineadm} != @(0|[1-9]) ]]; do
+read -p "[0-9]: " arquivoonlineadm
 tput cuu1 && tput dl1
 done
 case $arquivoonlineadm in
