@@ -243,7 +243,7 @@ echo -ne "\033[1;32m [11] > " && msg -azu "LIMPIADOR DE EXPIRADOS ------- $statg
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 while [[ ${arquivoonlineadm} != @(0|[1-9]) ]]; do
-read -p "[0-9]: " arquivoonlineadm
+read -p "[0-11]: " arquivoonlineadm
 tput cuu1 && tput dl1
 done
 case $arquivoonlineadm in
