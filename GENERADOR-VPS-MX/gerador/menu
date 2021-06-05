@@ -940,7 +940,7 @@ echo -ne "$(msg -verd " [11]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;97m CRED
 msg -bar && echo -ne "$(msg -verd " [0]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;41m  ❗️ SALIR DEL SCRIPT ❗️ "
 msg -bar
 # FIM
-selection=$(selection_fun 11)
+selection=$(selection_fun 12)
 case ${selection} in
 1)${SCPusr}/usercodes "${idioma}" ;;
 2)${SCPinst}/C-SSR.sh ;;
