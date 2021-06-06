@@ -238,8 +238,8 @@ echo -ne "\033[1;32m [6] > " && msg -azu "$(fun_trans "DESINTALAR V2RAY")"
 echo -ne "\033[1;32m [7] > " && msg -azu "$(fun_trans "AGREGAR USUARIO UUID")"
 echo -ne "\033[1;32m [8] > " && msg -azu "$(fun_trans "ELIMINAR USUARIO UUID")"
 echo -ne "\033[1;32m [9] > " && msg -azu "$(fun_trans "MOSTAR USUARIOS REGISTRADOS")"
-echo -ne "\033[1;32m [10] > " && msg -azu "ESTADISTICAS DE CONSUMO "
-echo -ne "\033[1;32m [11] > " && msg -azu "LIMPIADOR DE EXPIRADOS ------- $statgen\n$(msg -bar)"
+#echo -ne "\033[1;32m [10] > " && msg -azu "ESTADISTICAS DE CONSUMO "
+#echo -ne "\033[1;32m [11] > " && msg -azu "LIMPIADOR DE EXPIRADOS ------- $statgen\n$(msg -bar)"
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 while [[ ${arquivoonlineadm} != @(0|[1-9]) ]]; do
