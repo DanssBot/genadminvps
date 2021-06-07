@@ -298,3 +298,303 @@ msg -bar
 selection=$(selection_fun 3)
 case ${selection} in
 	1) gen_key_menu 1;;
+2) gen_key_menu 2;;
+	3) gen_key_menu 4;;
+	0)return;;
+esac
+ }
+}
+
+key_ok () {
+keyfinal=$(ofus "$IP:8888/$valuekey/$LIST")
+registro KEY_INSTALL_DE:$tipo KEY:$keyfinal NOMBRE:$nombrevalue
+clear
+msg -bar
+echo -e "\033[7;49;35m       >>>>>Key Generada Con Exito!<<<<<             \033[0m"
+echo -e "Key Activa $(printf '%(%D-%H:%M:%S)T')  \n\n 💥 $keyfinal  💥"
+msg -bar
+echo -e "Instalador Oficial"
+msg -bar
+echo -e "wget -q https://www.dropbox.com/s/i87udxpj1lj17sa/instala.sh; chmod +x instala.sh;./instala.sh \n"
+msg -bar
+echo -e " 🧬 Soporte : Ubuntu 14.04 - 16.04 - 20.04\n"
+echo -e "Verificada, https://t.me/ChumoGH Reseller : $vkey\n"
+echo -e ' 🪦 Solicita tus Creditos 🛡️⚔️'
+msg -bar
+#links_inst $linck
+echo -ne "\033[1;37m Enter para Finalizar"
+read foo
+}
+
+att_gen_key () {
+i=0
+rm ${SCPT_DIR}/*.x.c &> /dev/null
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+echo "[$i] Retornar"
+keys="$keys retorno"
+let i++
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+if [[ $(cat ${DIR}/${arqs}.name|grep GERADOR) ]]; then
+echo -e "\033[1;31m[$i] $arqsx ($(cat ${DIR}/${arqs}.name))\033[1;32m ($(cat ${DIR}/${arqs}/keyfixa))\033[0m"
+keys="$keys $arqs"
+let i++
+fi
+done
+keys=($keys)
+msg -bar
+while [[ -z ${keys[$value]} || -z $value ]]; do
+read -p "Seleccione qué Actualizar[t=todos]: " -e -i 0 value
+done
+[[ $value = 0 ]] && return
+if [[ $value = @(t|T) ]]; then
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+KEYDIR="$DIR/$arqs"
+rm $KEYDIR/*.x.c &> /dev/null
+ if [[ $(cat ${DIR}/${arqs}.name|grep GERADOR) ]]; then #Keyen Atualiza
+ rm ${KEYDIR}/${LIST}
+   for arqx in `ls $SCPT_DIR`; do
+    cp ${SCPT_DIR}/$arqx ${KEYDIR}/$arqx
+    echo "${arqx}" >> ${KEYDIR}/${LIST}
+    rm ${SCPT_DIR}/*.x.c &> /dev/null
+    rm $KEYDIR/*.x.c &> /dev/null
+   done
+ arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+ echo -e "\033[1;33m[KEY]: $arqsx \033[1;32m(ACTUALIZADA!)\033[0m"
+ fi
+let i++
+done
+rm ${SCPT_DIR}/*.x.c &> /dev/null
+msg -bar
+echo -ne "\033[0m" && read -p "Enter"
+return 0
+fi
+KEYDIR="$DIR/${keys[$value]}"
+[[ -d "$KEYDIR" ]] && {
+rm $KEYDIR/*.x.c &> /dev/null
+rm ${KEYDIR}/${LIST}
+  for arqx in `ls $SCPT_DIR`; do
+  cp ${SCPT_DIR}/$arqx ${KEYDIR}/$arqx
+  echo "${arqx}" >> ${KEYDIR}/${LIST}
+  rm ${SCPT_DIR}/*.x.c &> /dev/null
+  rm $KEYDIR/*.x.c &> /dev/null
+  done
+ arqsx=$(ofus "$IP:8888/${keys[$value]}/$LIST")
+ echo -e "\033[1;33m[KEY]: $arqsx \033[1;32m(ACTUALIZADA!)\033[0m"
+ read -p "Enter"
+ rm ${SCPT_DIR}/*.x.c &> /dev/null
+ }
+}
+
+remover_key () {
+unset i
+unset keys
+unset value
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+clear
+msg -bar
+echo -e "\033[7;49;35m                    Lista de Keys                    \033[0m"
+msg -bar
+keys="$keys retorno"
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+let i++
+
+if [[ ! -e ${DIR}/${arqs}/used.date ]] && [[ ! -e ${DIR}/${arqs}/key.fija ]]; then
+echo -e "$(msg -verd "[$i]") \033[0;49;93m$arqsx\n          \033[0;49;36m($(cat ${DIR}/${arqs}.name))\033[1;32m (ACTIVA)\033[0m"
+msg -bar
+elif [[ ! -e ${DIR}/${arqs}/key.fija ]]; then
+echo -e "$(msg -verd "[$i]") \033[0;49;31m$arqsx\n    \033[0;49;36m($(cat ${DIR}/${arqs}.name))\033[5;49;31m (USADA): \033[0;49;93m$(cat ${DIR}/${arqs}/used.date) IP:$(cat ${DIR}/${arqs}/used)\033[0m"
+msg -bar
+else
+echo -e "$(msg -verd "[$i]") \033[0;49;93m$arqsx\n          \033[0;49;36m($(cat ${DIR}/${arqs}.name)) \033[0;49;34m($(cat ${DIR}/${arqs}/key.fija))\033[0m"
+msg -bar
+fi
+
+keys="$keys $arqs"
+done
+keys=($keys)
+echo -e "$(msg -verd "[0]")$(msg -aqua ">") $(msg -bra "\033[7;49;35mAtras")"
+msg -bar
+value=$(selection_fun $i)
+[[ -d "$DIR/${keys[$value]}" ]] && rm -rf $DIR/${keys[$value]}* && keydel=$(ofus "$IP:8888/${keys[$value]}/$LIST") && registro key_eliminada $keydel &&remover_key
+}
+
+remover_key_usada () {
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+ [[ $1 = delall ]] && rm -rf ${DIR}/*
+ if [[ -e ${DIR}/${arqs}/used.date ]]; then #KEY USADA
+ 	if [[ ! -e ${DIR}/${arqs}/key.fija ]]; then
+       rm -rf ${DIR}/${arqs}*
+    fi
+ fi
+let i++
+done
+}
+
+reg_key_used () {
+	echo > $IVAR
+	registro se_limpio_el_registro_de_keys_usadas
+}
+
+start_gen () {
+unset PIDGEN
+PIDGEN=$(ps aux|grep -v grep|grep "http-server.sh")
+if [[ ! $PIDGEN ]]; then
+screen -dmS generador /bin/http-server.sh -start
+registro generador_online
+clear
+msg -bar
+echo -e "\033[1;32m                Generador en linea"
+msg -bar
+echo -ne "\033[1;97m Poner en linea despues de un reinicio [s/n]: "
+read start_ini
+msg -bar
+[[ $start_ini = @(s|S|y|Y) ]] && {
+	crontab -l > /root/cron
+	echo "@reboot screen -dmS generador /bin/http-server.sh -start" >> /root/cron
+	crontab /root/cron
+	rm /root/cron
+}
+else
+killall http-server.sh
+registro generador_offline
+crontab -l > /root/cron
+sed -i '/http-server.sh/ d' /root/cron
+crontab /root/cron
+rm /root/cron
+clear
+msg -bar
+echo -e "\033[1;31m            Generador fuera de linea"
+msg -bar
+sleep 3
+fi
+}
+
+message_gen () {
+read -p "NUEVO MENSAJE: " MSGNEW
+echo "$MSGNEW" > ${SCPT_DIR}/message.txt
+msg -bar
+registro cambio_creditos
+}
+
+rmv_iplib () {
+echo -e "SERVIDORES DE KEY ACTIVOS!"
+rm /var/www/html/newlib && touch /var/www/html/newlib
+rm ${SCPT_DIR}/*.x.c &> /dev/null
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+if [[ $(cat ${DIR}/${arqs}.name|grep GERADOR) ]]; then
+var=$(cat ${DIR}/${arqs}.name)
+ip=$(cat ${DIR}/${arqs}/keyfixa)
+echo -ne "\033[1;31m[USUARIO]: (\033[1;32m${var%%[*]}\033[1;31m) \033[1;33m[GERADOR]:\033[1;32m ($ip)\033[0m"
+echo "$ip" >> /var/www/html/newlib && echo -e " \033[1;36m[ATUALIZADO]"
+fi
+done
+echo "104.238.135.147" >> /var/www/html/newlib
+msg -bar
+read -p "Enter"
+}
+
+atualizar_geb () {
+clear
+msg -bar
+echo -e " \033[1;37mACTUALIZADOR DE GENERADOR DE KEYS"
+msg -bar
+menu_func "USAR CONTRASEÑA DE ADMINISTRADOR" "USAR KEY DE ACTUALIZACION"
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -aqua ">") "&& msg -bra "\033[7;49;35mREGRESAR"
+msg -bar
+selection=$(selection_fun 2)
+case ${selection} in
+1)pass_admin;;
+2)key_update;;
+esac
+}
+
+key_update () {
+clear
+msg -bar
+echo -e "\033[1;37m ACTUALIZANDO......"
+msg -bar
+rm -rf $SCPT_DIR &>/dev/null
+wget https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/BOT/instgerador.sh &> /dev/null; chmod 777 instgerador.sh* && ./instgerador.sh*
+sleep 3
+}
+
+pass_admin () {
+permited=$(ofus $(curl -sSL "https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/BOT/passw"))
+read -p "ESCRIBA SU CONTRASEÑA: " passw
+if [[ $permited = $passw ]]; then
+	clear
+	msg -bar
+	echo -e "\033[1;37m ACTUALIZANDO......"
+	msg -bar
+	sleep 2
+	wget -O $HOME/instger.sh https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/BOT/instgerador.sh &>/dev/null
+	chmod +x $HOME/instger.sh
+	cd $HOME
+	rm -rf $SCPT_DIR &>/dev/null
+	./instger.sh
+	rm $HOME/instger.sh &>/dev/null
+	registro actualizo_generador
+else
+	clear
+	msg -bar
+	echo -e "\033[1;37m LA CONTRASEÑA NO COINCIDE"
+	echo -e "\033[1;37m ACTUALIZACION CANSELADA!"
+	msg -bar
+	sleep 3
+fi
+}
+
+links_inst  () {
+if [[ $1 = 1 ]]; then
+[[ $2 = 1 ]] && clear
+msg -bar
+echo -e "\033[7;49;35m             LINKS INSTALL SCRIPT ChumoGH             "
+msg -bar
+echo -e "\033[1;37mwget -q https://www.dropbox.com/s/i87udxpj1lj17sa/instala.sh; chmod +x instala.sh;./instala.sh"
+msg -bar
+[[ $2 = 1 ]] && echo -ne "\033[1;37m Enter para Finalizar"
+[[ $2 = 1 ]] && read foo
+elif [[ $1 = 2 ]]; then
+msg -bar
+echo -e "\033[7;49;35m             LINKS INSTALL SCRIPT ChumoGH         "
+msg -bar
+echo -e "\033[1;37msudo apt update -y; apt upgrade -y; https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/BOT/instgerador.sh &> /dev/null; chmod 777 instgerador.sh* && ./instgerador.sh*"
+msg -bar
+fi
+}
+
+bot_menu () {
+CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/diesel09/vpsbot/main/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
+sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
+source ${CIDdir}/confbot.sh
+bot_conf
+}
+
+key_used () {
+echo -e " \033[1;37mKEYS USADAS: \033[1;49;95m[\033[1;32m$(cat $IVAR)\033[1;49;95m]"
+msg -bar
+}
+
+# SISTEMA DE SELECAO
+selection_fun () {
+local selection="null"
+local range
+for((i=0; i<=$1; i++)); do range[$i]="$i "; done
+while [[ ! $(echo ${range[*]}|grep -w "$selection") ]]; do
+echo -ne "\033[1;37m$(fun_trans "Selecione una Opcion"): " >&2
+read selection
+tput cuu1 >&2 && tput dl1 >&2
+done
+echo $selection
+}
+
+fun_trans () { 
