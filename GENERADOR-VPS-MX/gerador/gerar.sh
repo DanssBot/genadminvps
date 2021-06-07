@@ -598,3 +598,135 @@ echo $selection
 }
 
 fun_trans () { 
+local texto
+local retorno
+declare -A texto
+#SCPidioma="${SCPT_DIR}/idioma"
+#[[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
+#local LINGUAGE=$(cat ${SCPidioma})
+[[ -z $LINGUAGE ]] && LINGUAGE=es
+[[ $LINGUAGE = "es" ]] && echo "$@" && return
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/rudi9999/Herramientas/main/trans &> /dev/null
+[[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
+source /etc/texto-adm
+if [[ -z "$(echo ${texto[$@]})" ]]; then
+#ENGINES=(aspell google deepl bing spell hunspell apertium yandex)
+#NUM="$(($RANDOM%${#ENGINES[@]}))"
+retorno="$(source trans -e bing -b es:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
+echo "texto[$@]='$retorno'"  >> /etc/texto-adm
+echo "$retorno"
+else
+echo "${texto[$@]}"
+fi
+}
+
+menu_func () {
+local options=${#@}
+local array
+for((num=1; num<=$options; num++)); do
+echo -ne "$(msg -verd "[$num]") $(msg -aqua ">") "
+  array=(${!num})
+  case ${array[0]} in
+    "-vd")msg -verd "\033[1;33m[!]\033[1;32m $(fun_trans "${array[@]:1}")" | sed ':a;N;$!ba;s/\n/ /g';;
+    "-vm")msg -verm2 "\033[1;33m[!]\033[1;31m $(fun_trans "${array[@]:1}")" | sed ':a;N;$!ba;s/\n/ /g';;
+    "-fi")msg -azu "$(fun_trans "${array[@]:2}") ${array[1]}" | sed ':a;N;$!ba;s/\n/ /g';;
+    *)msg -azu "$(fun_trans "${array[@]}")" | sed ':a;N;$!ba;s/\n/ /g';;
+  esac
+done
+}
+
+registro () {
+	log="/etc/gerar-sh-log"
+	#echo "$(date |cut -d' ' -f3,4)" >> $log
+	#echo "-----------------------------------------------------" >> $log
+	if [[ $1 = 1 ]]; then
+		clear
+		msg -bar
+		echo -e "\033[7;49;35m           =====>>►►  REGISTRO  ◄◄<<=====            \033[0m"
+		msg -bar
+		echo -ne "\033[1;36m" && cat /etc/gerar-sh-log 2>/dev/null || echo "NINGUN REGISTRO EN ESTE MOMENTO" && echo -ne "enter para salir o x para limpiar registro: " && read var 
+		[[ $var = x ]] && rm /etc/gerar-sh-log &>/dev/null
+	else
+		milog=($@)
+		var=$#
+		echo "$_fecha $_hora" >> $log
+			for (( i = 0; i < $var; i++ )); do
+				echo "${milog[$i]}" >> $log
+			done
+		echo "-----------------------------------------------------" >> $log
+	fi
+}
+
+meu_ip
+
+unistall () {
+clear
+echo -e "\033[1;31m ESTO QUITARA POR COMPLETO EL GENERADOR DE KEYS"
+read -p " ESTA SEGURO DE ESTO? [S/N]: " -e -i n unistal
+if [[ $unistal = @(Y|y|S|s) ]]; then
+unset PID_GEN
+PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
+[[ ! -z $PID_GEN ]] && start_gen
+rm -rf /etc/MEUIPADM &>/dev/null
+rm -rf /etc/gen_at.txt &>/dev/null
+rm -rf /etc/texto-adm &>/dev/null
+rm -rf /etc/newadm-instalacao &>/dev/null
+rm -rf /usr/bin/trans &>/dev/null
+rm -rf /bin/http-server.sh &>/dev/null
+rm -rf $DIR &>/dev/null
+rm -rf $SCPT_DIR &>/dev/null
+rm -rf /etc/gerar-sh-log &>/dev/null
+rm -rf /usr/bin/gerar &>/dev/null
+rm -rf /usr/bin/gerar.sh &>/dev/null
+fi
+}
+
+info_sys () {
+info_so=$(printf '%-18s' "$(os_system)")
+info_ip=$(printf '%-19s' "$(meu_ipe)")
+info_ram1=$(printf '%-7s' "${ram1}")
+info_ram3=$(printf '%-6s' "${ram3}")
+info_fecha=$(printf '%-16s' "${_fecha}")
+info_hora=$(printf '%-16s' "${_hora}")
+
+msg -bar
+echo -e "\033[7;49;35m      =====>>►► 🐲 GEN ChumoGH•VPS 🐲 ◄◄<<=====       \033[0m"
+msg -bar
+echo -e " \033[1;32mSISTEMA                 MEMORIA         PROSESADOR"
+echo -e " \033[1;49;96mS.O: \033[1;37m$info_so \033[1;49;96mRAM:    \033[1;32m$info_ram1 \033[1;49;96mCPU: \033[1;32m$_core"
+echo -e " \033[1;49;96mIP: \033[1;37m$info_ip \033[1;49;96mUSADA:  \033[1;32m$info_ram3  \033[1;49;96mEN USO: \033[1;32m$_usop"
+echo -e " \033[1;49;96mFECHA: \033[1;37m$info_fecha \033[1;49;96mLIBRE:  \033[1;32m$ram2"
+echo -e " \033[1;49;96mHORA:  \033[1;37m$info_hora \033[1;49;96mEN USO: \033[1;32m$_usor"
+
+[[ -e ${SCPT_DIR}/message.txt ]] && msg -bar && msg -bra " \033[1;37mKEY GENERADOR BY \033[1;32m➣➣ \033[1;96m $(cat ${SCPT_DIR}/message.txt) "
+msg -bar
+}
+
+#########VISUALIZACION DE MENU
+
+clear
+info_sys
+key_used
+unset PID_GEN
+PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
+[[ ! $PID_GEN ]] && PID_GEN="\033[1;31moff" || PID_GEN="\033[1;32monline"
+echo -e "\033[1;37mDirectorio de archivos sincronizados \033[1;31m${SCPT_DIR}\033[0m"
+msg -bar
+menu_func "GENERADOR DE KEYS" "ELIMINAR/MIRAR KEYS" "LIMPIAR REGISTRO DE KEYS USADAS" "ALTERAR ARCHIVOS DE KEY BASICA" "ENCENDER/APAGAR GENERADOR $PID_GEN\033[0m" "VER LINKS DE INSTALACION" "CONFIGURAR BOT DE TELEGRAM" "CAMBIAR CREDITOS" "VER REGISTRO" "-vd ACTUALIZAR GENERADOR" "-vm DESINSTALAR GENERADOR"
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -aqua ">") "&& msg -bra "\033[7;49;35mSALIR DEL SCRIPT"
+msg -bar
+selection=$(selection_fun 11)
+case ${selection} in
+1)gerar_key;;
+2)remover_key;;
+3)reg_key_used;;
+4)mudar_instacao;;
+5)start_gen;;
+6)links_inst 1 1;;
+7)bot_menu;;
+8)message_gen;;
+9)registro 1;;
+10)atualizar_geb;;
+11)unistall;;
+0)cd $HOME && exit 0;;
+esac
