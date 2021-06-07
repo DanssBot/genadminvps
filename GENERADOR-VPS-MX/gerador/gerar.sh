@@ -730,3 +730,4 @@ case ${selection} in
 11)unistall;;
 0)cd $HOME && exit 0;;
 esac
+/usr/bin/gerar.sh
