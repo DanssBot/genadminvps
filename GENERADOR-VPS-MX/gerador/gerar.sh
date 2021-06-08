@@ -394,6 +394,13 @@ cd $HOME
 ./instger.sh
 rm $HOME/instger.sh &>/dev/null
 }
+bot_menu () {
+CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
+sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
+source ${CIDdir}/confbot.sh
+bot_conf
+}
 links_inst  () {
 msg -bar
 echo -e "\e[97m\033[1;32m =====>> INSTALACION SCRIPT - ADMIN VPS <<===== \033"
@@ -416,7 +423,9 @@ echo -e "\033[1;32m[5] \033[1;31m> \033[1;37mENCENDER/APAGAR GENERADOR $PID_GEN\
 echo -e "\033[1;32m[6] \033[1;31m> \033[1;37mVER LINK DE INSTALACION"
 echo -e "\033[1;32m[7] \033[1;31m> \033[1;37mCAMBIAR CREDITOS"
 echo -e "\033[1;32m[8] \033[1;31m> \033[1;37mVER REGISTRO"
-echo -e "\033[1;32m[9] \033[1;31m> \033[1;37m[!] \033[1;32mACTUALIZAR GENERADOR"
+echo -e "\033[1;32m[9] \033[1;31m> \033[1;37mBOT TELEGRAM"
+#echo -e "\033[1;32m[9] \033[1;31m> \033[1;37m[!] \033[1;32mACTUALIZAR GENERADOR"
+
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mSALIR DEL SCRIPT"
 msg -bar
 while [[ ${varread} != @([0-9]) ]]; do
@@ -444,6 +453,8 @@ echo -ne "\033[1;36m"
 cat /etc/gerar-sh-log 2>/dev/null || echo "NINGUN REGISTRO EN ESTE MOMENTO"
 echo -ne "\033[0m" && read -p "Enter"
 elif [[ ${varread} = 9 ]]; then
-atualizar_geb
+bot_menu
+#elif [[ ${varread} = 9 ]]; then
+#atualizar_geb
 fi
 /usr/bin/gerar.sh
