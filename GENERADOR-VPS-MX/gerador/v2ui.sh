@@ -45,7 +45,7 @@ act_gen () {
 v2ray-cgh="/etc/v2-ui"  > /dev/null 2>&1
 while [[ ${varread} != @([0-2]) ]]; do
 
-echo -e "\033[1;33mv2-ui v${last_version}${plain} La instalaciÃ³n estÃ¡ completa y el panel se ha activadoï¼Œ"
+echo -e "\033[1;33mv2-ui v${last_version}${plain} La instalacion esta completa y el panel se ha activado"
 systemctl daemon-reload
 systemctl enable v2-ui
 systemctl start v2-ui
@@ -59,7 +59,7 @@ echo -e ""
 
 echo -e "  Bienvenido a V2RAY PANEL WEB \n \033[1;36mLee detenidamente las indicaciones antes de continuar.....\n 1).- Certificado Automatico (Creditos ADM) \n 2).- Crear Certificado MANUAL\n" | lolcat
 echo -ne "${cor[6]}"
-read -p " $(source trans -b pt:${id} "Escoje / 0 para Salir "): " varread
+read -p " $(source trans -b pt:${id} "Seleccione / 0 para Salir "): " varread
 done
 echo -e "$BARRA"
 if [[ ${varread} = 0 ]]; then
