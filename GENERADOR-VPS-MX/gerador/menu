@@ -224,6 +224,9 @@ BAD+="$Port ";;
 trojan)
 [[ -z $TRO ]] && local TRO="\033[1;31m TROJAN SERVER: \033[1;32m"
 TRO+="$Port ";;
+v2ui)
+[[ -z $V2U ]] && local V2U="\033[1;31m V2RAY PANEL WEB: \033[1;32m"
+V2U+="$Port ";;
 esac
 done <<< "${portasVAR}"
 #UDP
@@ -253,6 +256,7 @@ done <<< "${portasVAR}"
 [[ ! -z $OVPN ]] && echo -e $OVPN
 [[ ! -z $BAD ]] && echo -e $BAD
 [[ ! -z $TRO ]] && echo -e $TRO
+[[ ! -z $V2U ]] && echo -e $V2U
 msg -bar2
 
 }
