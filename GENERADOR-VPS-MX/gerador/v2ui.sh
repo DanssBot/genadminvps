@@ -121,3 +121,17 @@ msg -bar
 return 0
 #read -p " Presiona enter para continuar"
 }
+msg -ama "$(fun_trans "MENU V2RAY PANEL WEB")"
+msg -bar
+echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "INSTALAR V2RAY") "
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
+msg -bar
+while [[ ${arquivoonlineadm} != @(0|[1-9]) ]]; do
+read -p "[0-9]: " arquivoonlineadm
+tput cuu1 && tput dl1
+done
+case $arquivoonlineadm in
+1)v2ui;;
+0)exit;;
+esac
+msg -bar
