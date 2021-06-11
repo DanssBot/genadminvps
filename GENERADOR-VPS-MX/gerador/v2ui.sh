@@ -57,7 +57,7 @@ echo -e ""
 echo -e "Si es un panel de actualizacion, acceda al panel como lo hizo antes, \n A continuacion crearemos su Certificado SSL"
 echo -e ""
 
-echo -e "  Bienvenido a V2RAY PANEL WEB \n \033[1;36mLee detenidamente las indicaciones antes de continuar.....\n 1).- Certificado Automatico (Creditos ADM) \n 2).- Crear Certificado MANUAL\n" | lolcat
+echo -e "  Bienvenido a V2RAY PANEL WEB \n \033[1;36mLee detenidamente las indicaciones antes de continuar.....\n 1).- Certificado Automatico \n 2).- Certificado MANUAL (Recomendado)\n" | lolcat
 echo -ne "${cor[6]}"
 read -p " $(source trans -b pt:${id} "Seleccione / 0 para Salir "): " varread
 done
