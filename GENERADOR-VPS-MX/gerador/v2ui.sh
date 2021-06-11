@@ -50,11 +50,11 @@ systemctl daemon-reload
 systemctl enable v2-ui
 systemctl start v2-ui
 echo -e ""
-echo -e "  Si se trata de una nueva instalacion \n El puerto web predeterminado es ${green}65432${plain}ï¼Œ\n El nombre de usuario y la contraseÃ±a son ambos predeterminados ${green}admin${plain}"
-echo -e "  AsegÃºrese de que este puerto no estÃ© ocupado por otros programasï¼Œ\n${yellow}AsegÃºrate 65432 El puerto ha sido liberado${plain}"
-echo -e "  Si desea modificar 65432 a otro puerto, \n ingrese el comando v2-ui para modificarlo, \n y tambiÃ©n asegÃºrese de que el puerto que modifica tambiÃ©n estÃ© permitido"
+echo -e "  Si se trata de una nueva instalacion \n El puerto web predeterminado es ${green}65432${plain} \n El nombre de usuario y la contrasena son ambos predeterminados ${green}admin${plain}"
+echo -e "  Asegurese de que este puerto no este ocupado por otros programas \n ${yellow}Asegurate que El puerto 65432 ha sido liberado${plain}"
+echo -e "  Si desea modificar 65432 a otro puerto, \n ingrese el comando v2-ui para modificarlo, \n y tambien asegurese de que el puerto que modifica tambien este libre"
 echo -e ""
-echo -e "Si es un panel de actualizaciÃ³n, acceda al panel como lo hizo antes, \n A continuacion crearemos su Certificado SSL"
+echo -e "Si es un panel de actualizacion, acceda al panel como lo hizo antes, \n A continuacion crearemos su Certificado SSL"
 echo -e ""
 
 echo -e "  Bienvenido a V2RAY PANEL WEB \n \033[1;36mLee detenidamente las indicaciones antes de continuar.....\n 1).- Certificado Automatico (Creditos ADM) \n 2).- Crear Certificado MANUAL\n" | lolcat
