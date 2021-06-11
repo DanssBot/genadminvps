@@ -224,7 +224,7 @@ BAD+="$Port ";;
 trojan)
 [[ -z $TRO ]] && local TRO="\033[1;31m TROJAN SERVER: \033[1;32m"
 TRO+="$Port ";;
-v2ui)
+v2-ui)
 [[ -z $V2U ]] && local V2U="\033[1;31m V2RAY PANEL WEB: \033[1;32m"
 V2U+="$Port ";;
 esac
