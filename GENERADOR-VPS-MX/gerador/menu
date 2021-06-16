@@ -569,6 +569,7 @@ case $1 in
 "PPub.py")return 1;;
 "speedtest.py")return 1;;
 "SSH20.log")return 1;; 
+"panelweb.sh")return 1;; 
 *)echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "${1^^} \033[1;33m($(fun_trans "No Hay Una Descripcion")!)";;
 esac
 }
