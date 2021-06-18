@@ -170,7 +170,7 @@ echo "1).- INSTALAR O DETENER SSL"
 echo "2).- AGREGAR PUERTOS EXTRAS SSL"
 echo "0).- REGRESAR AL MENU"
 msg -bar
-echo -n "Digite solo el numero segun su respuesta: "
+echo -n "Digite solo el numero, segun su respuesta: "
 read opcao
 case $opcao in
 1)
