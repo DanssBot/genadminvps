@@ -1,5 +1,5 @@
 #!/bin/bash
-#02/12/2020 by @Kalix1
+#18/06/2021
 declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
 SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
@@ -164,14 +164,15 @@ return 0
 }
 clear
 msg -bar
-echo -e "${cor[3]}       INSTALADOR MONO Y MULTI SSL By @Kalix1"
+echo -e "${cor[3]}       INSTALADOR MONO Y MULTI SSL"
 msg -bar
 echo -e "${cor[1]} Escoja la opcion deseada."
 msg -bar
-echo "1).- ININICIAR O PARAR SSL "
-echo "2).- AGREGAR PUERTOS SSL   "
+echo "1).- INSTALAR O PARAR SSL "
+echo "2).- AGREGAR OTRO PUERTO SSL   "
+echo "0).- REGRESAR AL MENU  "
 msg -bar
-echo -n "Digite solo el numero segun su respuesta: "
+echo -n "Seleccione una opcion"
 read opcao
 case $opcao in
 1)
