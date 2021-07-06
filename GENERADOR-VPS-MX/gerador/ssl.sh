@@ -103,7 +103,7 @@ echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = ${SSLPORT
 ####Coreccion2.0##### 
 openssl genrsa -out stunnel.key 2048 > /dev/null 2>&1
 
-(echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "@vpsmx" )|openssl req -new -key stunnel.key -x509 -days 1000 -out stunnel.crt > /dev/null 2>&1
+(echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "mx" ; echo "@felcouoh" )|openssl req -new -key stunnel.key -x509 -days 1000 -out stunnel.crt > /dev/null 2>&1
 
 cat stunnel.crt stunnel.key > stunnel.pem 
 
@@ -181,7 +181,7 @@ ssl_stunel
 ;;
 2)
 msg -bar
-echo -e "\033[1;93m  AGREGAR SSL EXTRA  ..."
+echo -e "\033[1;93m  AGREGAR PUERTO EXTRA  ..."
 msg -bar
 ssl_stunel_2
 sleep 3
