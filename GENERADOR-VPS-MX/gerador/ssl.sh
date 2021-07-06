@@ -170,9 +170,9 @@ echo -e "${cor[1]} Escoja la opcion deseada."
 msg -bar
 echo "1).- INSTALAR O PARAR SSL "
 echo "2).- AGREGAR OTRO PUERTO SSL   "
-echo "0).- REGRESAR AL MENU  "
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
-echo -n "Seleccione una opcion"
+echo -n "Seleccione una opcion: "
 read opcao
 case $opcao in
 1)
