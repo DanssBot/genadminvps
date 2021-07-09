@@ -302,6 +302,13 @@ cd $HOME
 ./instger.sh
 rm $HOME/instger.sh &>/dev/null
 }
+bot_menu () {
+CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
+sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
+source ${CIDdir}/confbot.sh
+bot_conf
+}
 meu_ip
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
@@ -317,9 +324,11 @@ echo -e "[5] = ENCENDER/APAGAR GENERADOR $PID_GEN\033[0m"
 echo -e "[6] = VER REGISTRO"
 echo -e "[7] = CAMBIAR CREDITOS"
 echo -e "[8] = ACTUALIZAR GENERADOR"
+echo -e "\033[1;32m[9] \033[1;31m> \033[1;37mBOT TELEGRAM"
 echo -e "[0] = SALIR"
 echo -e "$BARRA"
-while [[ ${varread} != @([0-8]) ]]; do
+while [[ ${varread} != @([geb
+]) ]]; do
 read -p "Opcion: " varread
 done
 echo -e "$BARRA"
@@ -343,5 +352,7 @@ elif [[ ${varread} = 7 ]]; then
 message_gen
 elif [[ ${varread} = 8 ]]; then
 atualizar_geb
+elif [[ ${varread} = 9 ]]; then
+bot_menu
 fi
 /usr/bin/gerar.sh
