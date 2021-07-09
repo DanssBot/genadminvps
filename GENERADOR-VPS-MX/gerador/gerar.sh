@@ -328,8 +328,7 @@ echo -e "[8] = ACTUALIZAR GENERADOR"
 echo -e "\033[1;32m[9] \033[1;31m> \033[1;37mBOT TELEGRAM"
 echo -e "[0] = SALIR"
 echo -e "$BARRA"
-while [[ ${varread} != @([geb
-]) ]]; do
+while [[ ${varread} != @([0-9]) ]]; do
 read -p "Opcion: " varread
 done
 echo -e "$BARRA"
