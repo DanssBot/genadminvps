@@ -155,7 +155,7 @@ KEY="$1"
 i=0
 VALUE+="gerar.sh instgerador.sh http-server.py lista-arq $BASICINST"
 for arqx in `ls ${SCPT_DIR}`; do
-[[ $(echo $VALUE|grep -w "${arqx}") ]] && continue 
+[[ $(echo $BASICINST|grep -w "${arqx}") ]] && continue
 echo -e "[$i] -> ${arqx}"
 arq_list[$i]="${arqx}"
 let i++
