@@ -64,7 +64,17 @@ PythonDic_fun () {
 echo -e "\033[1;97mSelecciona Puerto Local\033[1;37m" 
 msg -bar
 echo -ne "Digite Un Puerto SSH/DROPBEAR activo: \033[1;37m" && read puetoantla 
- msg -bar
+msg -bar
+[[ -z $response2 ]] && {
+	echo -e "\033[1;31mRESPUESTA PERSONALIZADA\033[0m"
+	msg -bar
+	echo -ne "\033[1;49;37mEnter por defecto (200): "
+	read response2
+	if [[ -z $response2  ]]; then
+		response2="200"
+	fi
+}
+msg -bar
 (
 less << PYTHON  > /etc/ger-inst/PDirect.py
 import socket, threading, thread, select, signal, sys, time, getopt
