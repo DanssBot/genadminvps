@@ -26,7 +26,7 @@ tcpbypass_fun () {
 [[ -d $HOME/socks ]] && rm -rf $HOME/socks > /dev/null 2>&1
 cd $HOME && mkdir socks > /dev/null 2>&1
 cd socks
-patch="https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/backsocz"
+patch="https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/NEW-ULTIMATE-VPS-MX-8.0/VPS-MX_Oficial/ArchivosUtilitarios/backsocz"
 arq="backsocz"
 wget $patch -o /dev/null
 unzip $arq > /dev/null 2>&1
@@ -61,15 +61,14 @@ screen -dmS getpy python ${SCPinst}/PGet.py -b "0.0.0.0:$1" -p "${SCPinst}/pwd.p
 }
 
 PythonDic_fun () {
-echo -e "\033[1;97mSelecciona Puerto Local\033[1;37m" 
+echo -e "\033[1;36mEscribe el Puerto de redireccionamiento" 
 msg -bar
-echo -ne "Digite Un Puerto SSH/DROPBEAR activo: \033[1;37m" && read puetoantla 
+echo -e "\033[1;36mDigite Un Puerto SSH/DROPBEAR activo: \033[1;32m" && read puetoantla 
 msg -bar
 [[ -z $response2 ]] && {
 	echo -e "\033[1;31mRESPUESTA PERSONALIZADA\033[0m"
 	msg -bar
-	echo -ne "\033[1;49;37mEnter por defecto (200): "
-	read response2
+	echo -e "\033[1;36mEnter por defecto (200): \033[1;32m" && read response2
 	if [[ -z $response2  ]]; then
 		response2="200"
 	fi
@@ -78,7 +77,6 @@ msg -bar
 (
 less << PYTHON  > /etc/ger-inst/PDirect.py
 import socket, threading, thread, select, signal, sys, time, getopt
-
 # Listen
 LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
@@ -87,14 +85,12 @@ else:
   LISTENING_PORT = 80  
 #Pass
 PASS = ''
-
 # CONST
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:$puetoantla'
-RESPONSE = 'HTTP/1.1 200 <strong>$texto_soket</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'
+RESPONSE = 'HTTP/1.1 $response2 <strong>$texto_soket</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
-
 class Server(threading.Thread):
     def __init__(self, host, port):
         threading.Thread.__init__(self)
@@ -104,7 +100,6 @@ class Server(threading.Thread):
         self.threads = []
         self.threadsLock = threading.Lock()
         self.logLock = threading.Lock()
-
     def run(self):
         self.soc = socket.socket(socket.AF_INET)
         self.soc.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -113,7 +108,6 @@ class Server(threading.Thread):
         self.soc.bind((self.host, intport))
         self.soc.listen(0)
         self.running = True
-
         try:
             while self.running:
                 try:
@@ -121,19 +115,16 @@ class Server(threading.Thread):
                     c.setblocking(1)
                 except socket.timeout:
                     continue
-
                 conn = ConnectionHandler(c, self, addr)
                 conn.start()
                 self.addConn(conn)
         finally:
             self.running = False
             self.soc.close()
-
     def printLog(self, log):
         self.logLock.acquire()
         print log
         self.logLock.release()
-
     def addConn(self, conn):
         try:
             self.threadsLock.acquire()
@@ -141,26 +132,21 @@ class Server(threading.Thread):
                 self.threads.append(conn)
         finally:
             self.threadsLock.release()
-
     def removeConn(self, conn):
         try:
             self.threadsLock.acquire()
             self.threads.remove(conn)
         finally:
             self.threadsLock.release()
-
     def close(self):
         try:
             self.running = False
             self.threadsLock.acquire()
-
             threads = list(self.threads)
             for c in threads:
                 c.close()
         finally:
             self.threadsLock.release()
-
-
 class ConnectionHandler(threading.Thread):
     def __init__(self, socClient, server, addr):
         threading.Thread.__init__(self)
@@ -170,7 +156,6 @@ class ConnectionHandler(threading.Thread):
         self.client_buffer = ''
         self.server = server
         self.log = 'Connection: ' + str(addr)
-
     def close(self):
         try:
             if not self.clientClosed:
@@ -180,7 +165,6 @@ class ConnectionHandler(threading.Thread):
             pass
         finally:
             self.clientClosed = True
-
         try:
             if not self.targetClosed:
                 self.target.shutdown(socket.SHUT_RDWR)
@@ -189,21 +173,15 @@ class ConnectionHandler(threading.Thread):
             pass
         finally:
             self.targetClosed = True
-
     def run(self):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
-
             hostPort = self.findHeader(self.client_buffer, 'X-Real-Host')
-
             if hostPort == '':
                 hostPort = DEFAULT_HOST
-
             split = self.findHeader(self.client_buffer, 'X-Split')
-
             if split != '':
                 self.client.recv(BUFLEN)
-
             if hostPort != '':
                 passwd = self.findHeader(self.client_buffer, 'X-Pass')
 				
@@ -218,7 +196,6 @@ class ConnectionHandler(threading.Thread):
             else:
                 print '- No X-Real-Host!'
                 self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
-
         except Exception as e:
             self.log += ' - error: ' + e.strerror
             self.server.printLog(self.log)
@@ -226,22 +203,16 @@ class ConnectionHandler(threading.Thread):
         finally:
             self.close()
             self.server.removeConn(self)
-
     def findHeader(self, head, header):
         aux = head.find(header + ': ')
-
         if aux == -1:
             return ''
-
         aux = head.find(':', aux)
         head = head[aux+2:]
         aux = head.find('\r\n')
-
         if aux == -1:
             return ''
-
         return head[:aux];
-
     def connect_target(self, host):
         i = host.find(':')
         if i != -1:
@@ -252,23 +223,17 @@ class ConnectionHandler(threading.Thread):
                 port = $puetoantla
             else:
                 port = sys.argv[1]
-
         (soc_family, soc_type, proto, _, address) = socket.getaddrinfo(host, port)[0]
-
         self.target = socket.socket(soc_family, soc_type, proto)
         self.targetClosed = False
         self.target.connect(address)
-
     def method_CONNECT(self, path):
         self.log += ' - CONNECT ' + path
-
         self.connect_target(path)
         self.client.sendall(RESPONSE)
         self.client_buffer = ''
-
         self.server.printLog(self.log)
         self.doCONNECT()
-
     def doCONNECT(self):
         socs = [self.client, self.target]
         count = 0
@@ -289,7 +254,6 @@ class ConnectionHandler(threading.Thread):
                                 while data:
                                     byte = self.target.send(data)
                                     data = data[byte:]
-
                             count = 0
 			else:
 			    break
@@ -300,13 +264,10 @@ class ConnectionHandler(threading.Thread):
                 error = True
             if error:
                 break
-
-
 def print_usage():
     print 'Usage: proxy.py -p <port>'
     print '       proxy.py -b <bindAddr> -p <port>'
     print '       proxy.py -b 0.0.0.0 -p 80'
-
 def parse_args(argv):
     global LISTENING_ADDR
     global LISTENING_PORT
@@ -324,8 +285,6 @@ def parse_args(argv):
             LISTENING_ADDR = arg
         elif opt in ("-p", "--port"):
             LISTENING_PORT = int(arg)
-
-
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     print "\n:-------PythonProxy-------:\n"
     print "Listening addr: " + LISTENING_ADDR
@@ -340,11 +299,9 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
             print 'Stopping...'
             server.close()
             break
-
 #######    parse_args(sys.argv[1:])
 if __name__ == '__main__':
     main()
-
 PYTHON
 ) > $HOME/proxy.log
 
@@ -385,16 +342,16 @@ pidproxy3=$(ps x | grep -w  "PDirect.py" | grep -v "grep" | awk -F "pts" '{print
 pidproxy4=$(ps x | grep -w  "POpen.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy4 ]] && P4="\033[1;32m[ON]" || P4="\033[1;31m[OFF]"
 pidproxy5=$(ps x | grep "PGet.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy5 ]] && P5="\033[1;32m[ON]" || P5="\033[1;31m[OFF]"
 pidproxy6=$(ps x | grep "scktcheck" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy6 ]] && P6="\033[1;32m[ON]" || P6="\033[1;31m[OFF]"
-echo -e "\033[1;32m $(fun_trans  "INSTALADOR SOCKS VPS-MX By MOD @Kalix1")"
+echo -e "\033[1;32m $(fun_trans  "INSTALADOR SOCKS")"
 msg -bar
 echo -e "${cor[4]} [1] > \033[1;36m$(fun_trans  "Socks Python SIMPLE") $P1"
 echo -e "${cor[4]} [2] > \033[1;36m$(fun_trans  "Socks Python SEGURO") $P2"
-echo -e "${cor[4]} [3] > \033[1;36m$(fun_trans  "Socks Python DIRETO") $P3"
+echo -e "${cor[4]} [3] > \033[1;36m$(fun_trans  "Socks Python DIRECTO") $P3"
 echo -e "${cor[4]} [4] > \033[1;36m$(fun_trans  "Socks Python OPENVPN") $P4"
 echo -e "${cor[4]} [5] > \033[1;36m$(fun_trans  "Socks Python GETTUNEL") $P5"
 echo -e "${cor[4]} [6] > \033[1;36m$(fun_trans  "Socks Python TCP BYPASS") $P6"
 echo -e "${cor[4]} [7] > \033[1;36m$(fun_trans  "PARAR TODOS SOCKS PYTHON")"
-echo -e "${cor[4]} [0] > \033[1;37m$(fun_trans  "VOLVER")"
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 IP=(meu_ip)
 while [[ -z $portproxy || $portproxy != @(0|[1-7]) ]]; do
@@ -405,16 +362,16 @@ done
     7)remove_fun;;
     0)return;;
  esac
-echo -e "Selecciona Puerto Principal del Proxy"
+echo -e "\033[1;35mDSelecciona Puerto Principal del Proxy"
 msg -bar
 porta_socket=
 while [[ -z $porta_socket || ! -z $(mportas|grep -w $porta_socket) ]]; do
-echo -ne "Digite el Puerto: \033[1;37m" && read porta_socket
+echo -e "\033[1;35mDigite el Puerto: \033[1;32m" && read porta_socket
 tput cuu1 && tput dl1
 done
 echo -e "$(fun_trans  "Introdusca su Mini-Banner")"
 msg -bar
-echo -ne "Introduzca el texto de estado plano o en HTML:\n \033[1;37m" && read texto_soket
+echo -e "\033[1;35mIntroduzca el texto de estado, plano o HTML:\n \033[1;32m" && read texto_soket
     msg -bar
     case $portproxy in
     1)screen -dmS screen python ${SCPinst}/PPub.py "$porta_socket" "$texto_soket";;
