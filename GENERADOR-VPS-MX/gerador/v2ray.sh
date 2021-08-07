@@ -25,8 +25,8 @@ err_fun () {
 }
 intallv2ray () {
 apt install python3-pip -y 
-source <(curl -sL https://multi.netlify.app/v2ray.sh)
-msg -ama "$(fun_trans "Intalado con Exito")!"
+source <(curl -sL https://multi.netlify.com/v2ray.sh)
+msg -ama "$(fun_trans "Instalado con Exito")!"
 }
 protocolv2ray () {
 msg -ama "$(fun_trans "Escojer opcion 3 y poner el dominio de nuestra IP")!"
