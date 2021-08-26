@@ -12,7 +12,7 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
   -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${VERMELHO}" && echo -ne "${cor}${2}${SEMCOR}";;
   "-bar2"|"-bar")cor="${VERMELHO}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
-  -tit)echo -e "\033[1;41m #-#-► 🐲 MEGA CENTER COMPUTACION - V2RAY 🐲 ◄-#-#  \033[1;49m\033[1;49m \033" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  -tit)echo -e "\033[1;41m #-#-► 🐲 ADMIN VPS 🐲 ◄-#-#  \033[1;49m\033[1;49m \033" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
   -bar3) $([[ ! -e $(echo -e $(echo "Not Function Now"| sed 's/../\\x&/g;s/$/ /')) ]] && $( aviso_block > /dev/null 2>&1)) && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
@@ -45,7 +45,7 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 echo -e "\033[0m\e[31m======================================================\033[1;37m"
-echo -e "\033[0m\e[36m  MEGA CENTER--Optimizar Maquina--Alone in the DARK             "
+echo -e "\033[0m\e[36m  ►► ADMIN VPS - Optimizar Servidor ◄◄            "
 echo -e "\033[0m\e[31m======================================================\033[1;37m"
 echo ""
 #
@@ -148,4 +148,3 @@ echo -e "\033[1;37mEconomia de :\033[1;31m `expr $MEM1 - $MEM2`%\033[0m"
 echo -e "\033[0m\e[31m======================================================\033[1;37m"
 echo""
 msg -ne "Enter Para Continuar" && read enter
-${SCPinst}/v2ray.sh
