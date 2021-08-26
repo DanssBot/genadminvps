@@ -570,6 +570,7 @@ case $1 in
 "speedtest.py")return 1;;
 "SSH20.log")return 1;; 
 "panelweb.sh")return 1;; 
+"optimizar.sh")return 1;; 
 *)echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "${1^^} \033[1;33m($(fun_trans "No Hay Una Descripcion")!)";;
 esac
 }
@@ -634,8 +635,11 @@ script[$Numb]="gestor.sh"
 #OPTIMIZADORES
 echo -e "\033[1;93m---------------------OPTIMIZADORES-------------------"
 let Numb++
-echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "Limpiar/Cache/Ram/Librerias/etc..  $ofc"
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "Limpiar M. Ram/Librerias/etc..  $ofc"
 script[$Numb]="utils.sh"
+let Numb++
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "Limpiar Cache del Servidor      $ofc"
+script[$Numb]="optimizar.sh"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "DETALLES DE SISTEMA                $ofc"
 script[$Numb]="systeminf"
