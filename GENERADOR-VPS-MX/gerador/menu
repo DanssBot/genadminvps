@@ -570,7 +570,8 @@ case $1 in
 "speedtest.py")return 1;;
 "SSH20.log")return 1;; 
 "panelweb.sh")return 1;; 
-"optimizar.sh")return 1;; 
+"optimizar.sh")return 1;;
+"vnc")return 1;;
 *)echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "${1^^} \033[1;33m($(fun_trans "No Hay Una Descripcion")!)";;
 esac
 }
@@ -657,6 +658,9 @@ script[$Numb]="speed.sh"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PANEL WEB SSH (Ubuntu 14)          $dev2"
 script[$Numb]="panelweb.sh"
+let Numb++
+echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "VNC VIEWER                    $dev2"
+script[$Numb]="vnc"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verd "AGREGAR HERRAMIENTAS           $ofc"
 script[$Numb]="agregar"
