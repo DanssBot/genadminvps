@@ -14,15 +14,16 @@ if [ -e /etc/adm/bnr ]; then
 /etc/adm/bnr
 fi
 cowsay -f eyes "esta herramienta crea un panel de tu O.S para usarlo como ordenador...." | lolcat 
-figlet ..dankelthaher.. | lolcat
-echo -e "\033[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[0m"
+figlet ..Admin Vps.. | lolcat
+echo -e "\033[0;31m————————————————————————————————————————————————————\033[0m"
 echo -e "\033[1;34mLA INSTALACION PUEDE DEMORAR ALGUNOS MINUTOS\033[0m"
-echo -e "\033[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[0m"
-echo -e "\033[1;34mRECUERDA QUE DEVES DESCARGAR E INSTALAR LA APLICACION\033[0m"
-echo -e "\033[1;34m DE VNC VIWER DESDE PLAYSTORE\033[0m"
-echo -e "\033[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[0m"
+echo -e "\033[0;31m————————————————————————————————————————————————————\033[0m"
+echo -e "\033[1;34mRECUERDA QUE DEBES DESCARGAR E INSTALAR LA APLICACION\033[0m"
+echo -e "\033[1;34m DE VNC VIEWER DESDE PLAYSTORE PARA ANDRIOD\033[0m"
+echo -e "\033[1;34m O VERSION PARA PC\033[0m"
+echo -e "\033[0;31m————————————————————————————————————————————————————\033[0m"
 echo -e "\033[1;31m[ 0 ] SALIR\033[0m"
-echo -e "\033[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[0m"
+echo -e "\033[0;31m————————————————————————————————————————————————————\033[0m"
 echo -e "\033[1;32m[ 1 ] \033[1;36mInstalar VNC\033[0m"
 if [ -d  /root/.vnc/ ];then
 vnc=$(ls /root/.vnc/ | grep :1.pid)
@@ -35,7 +36,7 @@ else
 echo -e "\033[1;32m[ 2 ] \033[1;31mparar\033[1;36m VNC\033[0m"
 fi
 echo -e "\033[1;32m[ 3 ] \033[1;37mRemover \033[1;36mVNC\033[0m"
-echo -e "\033[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[0m"
+echo -e "\033[0;31m————————————————————————————————————————————————————\033[0m"
 read -p "OPCION: " resposta
 case $resposta in
 1)
@@ -71,9 +72,10 @@ vncserver
 echo -e "\033[1;33m"
 apt-get install firefox -y
 echo -e "\033[1;34m VNC se conecta usando la ip de vps en puerto 5901\033[1;32m"
-echo -e "\033[1;34m Exemplo: $AIP:5901\033[1;32m"
-echo -e "\033[1;34m Para aceder a interface gráfica\033[1;32m"
-echo -e "\033[1;34m Descargue de PLAYSTORE la app de VNC VIWER\033[1;32m"
+echo -e "\033[1;34m Ejemplo: $AIP:5901\033[1;32m"
+echo -e "\033[1;34m Para aceder a la interfaz gráfica\033[1;32m"
+echo -e "\033[1;34m Descargue de PLAYSTORE la app de VNC VIEWER\033[1;32m"
+echo -e "\033[1;34m O version para PC\033[1;32m"
 echo -e "\033[1;34m Coloque su Ip $AIP y su puerto 5901\033[0m"
 read -p "enter"
 /bin/VNC
