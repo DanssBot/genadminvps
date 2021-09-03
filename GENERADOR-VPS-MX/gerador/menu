@@ -667,7 +667,8 @@ script[$Numb]="agregar"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") $(msg -ama "[!]") " && msg -verm2 "REMOVER HERRAMIENTAS           $ofc"
 script[$Numb]="remove"
-echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") " && msg -bra "$(fun_trans "  VOLVER")"
+echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
+#echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") " && msg -bra "$(fun_trans "  VOLVER")"
 script[0]="voltar"
 msg -bar2
 selection=$(selection_fun $Numb)
