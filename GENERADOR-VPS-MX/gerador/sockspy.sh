@@ -68,7 +68,7 @@ msg -bar
 [[ -z $response2 ]] && {
 	echo -e "\033[1;31mRESPUESTA PERSONALIZADA\033[0m"
 	msg -bar
-	echo -e "\033[1;36m(101,200,484,500,etc), Enter por defecto (200): \033[1;32m" && read response2
+	echo -e "\033[1;36mDigite, (101,200,484,500,etc), Enter por defecto (200): \033[1;32m" && read response2
 	if [[ -z $response2  ]]; then
 		response2="200"
 	fi
