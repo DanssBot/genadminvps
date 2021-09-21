@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 fun_bar () {
           comando[0]="$1"
           comando[1]="$2"
@@ -44,8 +43,6 @@ inst_ssl () {
 pkill -f stunnel4
 pkill -f stunnel
 pkill -f 443
-pkill -f v2ray
-pkill -f v2-ui
 apt-get purge stunnel4 -y
 apt-get purge stunnel -y
 apt-get install stunnel4 -y
@@ -73,17 +70,15 @@ pt=$(netstat -nplt |grep 'sshd' | awk -F ":" NR==1{'print $2'} | cut -d " " -f 1
 
  cat <<EOF > proxy.py
 import socket, threading, thread, select, signal, sys, time, getopt
-
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
 LISTENING_PORT = 1080
 PASS = ''
-
 # CONST
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = "127.0.0.1:$pt"
-RESPONSE = 'HTTP/1.1 101 Switching Protocols \r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 Switching Protocols! \r\n\r\n'
  
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -94,7 +89,6 @@ class Server(threading.Thread):
         self.threads = []
 	self.threadsLock = threading.Lock()
 	self.logLock = threading.Lock()
-
     def run(self):
         self.soc = socket.socket(socket.AF_INET)
         self.soc.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -102,7 +96,6 @@ class Server(threading.Thread):
         self.soc.bind((self.host, self.port))
         self.soc.listen(0)
         self.running = True
-
         try:                    
             while self.running:
                 try:
@@ -149,7 +142,6 @@ class Server(threading.Thread):
         finally:
             self.threadsLock.release()
 			
-
 class ConnectionHandler(threading.Thread):
     def __init__(self, socClient, server, addr):
         threading.Thread.__init__(self)
@@ -159,7 +151,6 @@ class ConnectionHandler(threading.Thread):
         self.client_buffer = ''
         self.server = server
         self.log = 'Connection: ' + str(addr)
-
     def close(self):
         try:
             if not self.clientClosed:
@@ -178,7 +169,6 @@ class ConnectionHandler(threading.Thread):
             pass
         finally:
             self.targetClosed = True
-
     def run(self):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
@@ -187,9 +177,7 @@ class ConnectionHandler(threading.Thread):
             
             if hostPort == '':
                 hostPort = DEFAULT_HOST
-
             split = self.findHeader(self.client_buffer, 'X-Split')
-
             if split != '':
                 self.client.recv(BUFLEN)
             
@@ -207,7 +195,6 @@ class ConnectionHandler(threading.Thread):
             else:
                 print '- No X-Real-Host!'
                 self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
-
         except Exception as e:
             self.log += ' - error: ' + e.strerror
             self.server.printLog(self.log)
@@ -215,22 +202,17 @@ class ConnectionHandler(threading.Thread):
         finally:
             self.close()
             self.server.removeConn(self)
-
     def findHeader(self, head, header):
         aux = head.find(header + ': ')
     
         if aux == -1:
             return ''
-
         aux = head.find(':', aux)
         head = head[aux+2:]
         aux = head.find('\r\n')
-
         if aux == -1:
             return ''
-
         return head[:aux];
-
     def connect_target(self, host):
         i = host.find(':')
         if i != -1:
@@ -241,23 +223,18 @@ class ConnectionHandler(threading.Thread):
                 port = 443
             else:
                 port = 80
-
         (soc_family, soc_type, proto, _, address) = socket.getaddrinfo(host, port)[0]
-
         self.target = socket.socket(soc_family, soc_type, proto)
         self.targetClosed = False
         self.target.connect(address)
-
     def method_CONNECT(self, path):
         self.log += ' - CONNECT ' + path
         
         self.connect_target(path)
         self.client.sendall(RESPONSE)
         self.client_buffer = ''
-
         self.server.printLog(self.log)
         self.doCONNECT()
-
     def doCONNECT(self):
         socs = [self.client, self.target]
         count = 0
@@ -278,7 +255,6 @@ class ConnectionHandler(threading.Thread):
                                 while data:
                                     byte = self.target.send(data)
                                     data = data[byte:]
-
                             count = 0
 			else:
 			    break
@@ -287,16 +263,12 @@ class ConnectionHandler(threading.Thread):
                         break
             if count == TIMEOUT:
                 error = True
-
             if error:
                 break
-
-
 def print_usage():
     print 'Usage: proxy.py -p <port>'
     print '       proxy.py -b <bindAddr> -p <port>'
     print '       proxy.py -b 0.0.0.0 -p 1080'
-
 def parse_args(argv):
     global LISTENING_ADDR
     global LISTENING_PORT
@@ -315,7 +287,6 @@ def parse_args(argv):
         elif opt in ("-p", "--port"):
             LISTENING_PORT = int(arg)
     
-
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     
     print "\n ==============================\n"
@@ -327,7 +298,6 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     
     server = Server(LISTENING_ADDR, LISTENING_PORT)
     server.start()
-
     while True:
         try:
             time.sleep(2)
@@ -345,7 +315,12 @@ screen -dmS pythonwe python proxy.py -p 80&
 
 }
 fun_bar 'inst_py'
-rm -rf proxy.py
+proxy.py
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+
+echo -e "ps x | grep 'pythonwe' | grep -v 'grep' || screen -dmS pythonwe python proxy.py -p 80" >> /etc/autostart
+
 echo
 echo -e " \033[1;37m  AHORA HAGA LO SIGUENTE "
 echo -e " \033[1;37mPARA CREAR UN USUARIO ESCRIBA :CREARUSER "
