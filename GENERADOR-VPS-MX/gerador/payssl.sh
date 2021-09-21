@@ -1,4 +1,7 @@
 #!/bin/bash
+declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
+SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
+SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
 
 fun_bar () {
           comando[0]="$1"
@@ -32,11 +35,12 @@ fun_bar () {
 
 clear&&clear
 echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
-echo -e "\033[1;32m            PAYLOAD + SSL |BY KILLSHITO "
+echo -e "\033[1;32m            PAYLOAD + SSL | ADMIN VPS "
 echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;36m               SCRIPT AUTOCONFIGURACION "
 echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
-echo -e "\033[1;37mRequiere tener el puerto libre ,80 y el 443"
+echo -e "\033[1;37mRequiere tener libre el puerto 80 y el 443"
+echo -e "\033[1;37mUse una VPS Nueva o Recien formateada"
 echo
 echo -e "\033[1;33m INSTALADO SSL.. "
 inst_ssl () {
@@ -50,7 +54,7 @@ apt-get install stunnel -y
 pt=$(netstat -nplt |grep 'sshd' | awk -F ":" NR==1{'print $2'} | cut -d " " -f 1)
 echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:${pt}\naccept = 443" > /etc/stunnel/stunnel.conf
 openssl genrsa -out key.pem 2048 > /dev/null 2>&1
-(echo br; echo br; echo uss; echo speed; echo pnl; echo killshito; echo @killshito.com)|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
+(echo Mx; echo Mx; echo uss; echo speed; echo pnl; echo FelipeCouoh; echo @Data-cloud)|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
@@ -78,7 +82,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = "127.0.0.1:$pt"
-RESPONSE = 'HTTP/1.1 101 Switching Protocols! \r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 Data-cloud.club \r\n\r\n'
  
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -321,19 +325,3 @@ iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 
 echo -e "ps x | grep 'pythonwe' | grep -v 'grep' || screen -dmS pythonwe python proxy.py -p 80" >> /etc/autostart
 
-echo
-echo -e " \033[1;37m  AHORA HAGA LO SIGUENTE "
-echo -e " \033[1;37mPARA CREAR UN USUARIO ESCRIBA :CREARUSER "
-echo -e " \033[1;37mPARA REMOVE UN USUARIO ESCRIBA :REMOUSER "
-echo
-echo
-echo '
-echo
-read -p "Usuario :" name
-read -p "Contraseña :" pass
-useradd -M -s /bin/false $name
-(echo $pass; echo $pass)|passwd $name 2>/dev/null' > /bin/CREARUSER &&chmod +x /bin/CREARUSER
-echo '
-echo
-read -p "Escriba su usuario que desa remover :" user
-userdel -f $us' >/bin/REMOUSER &&chmod +x /bin/REMOUSER
