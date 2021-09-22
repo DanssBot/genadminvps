@@ -168,8 +168,9 @@ echo -e "${cor[3]}       INSTALADOR MONO Y MULTI SSL"
 msg -bar
 echo -e "${cor[1]} Escoja la opcion deseada."
 msg -bar
-echo "1).- INSTALAR O PARAR SSL "
+echo "1).- INSTALAR | DETENER SSL "
 echo "2).- AGREGAR OTRO PUERTO SSL   "
+echo "3).- SSL+PYDIREC (AUTO CONFIGURACION)   "
 msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 echo -n "Seleccione una opcion: "
