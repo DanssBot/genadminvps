@@ -329,3 +329,4 @@ echo -e "ps x | grep 'pythonwe' | grep -v 'grep' || screen -dmS pythonwe python 
 echo -e "\033[1;32m            INSTALACION COMPLETADA "
 
 echo 
+esac
