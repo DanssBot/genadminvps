@@ -1047,7 +1047,7 @@ msg -ama "   MENU ADMINISTRACION DE USUARIOS SSL/SSH/DROPBEAR"
 msg -bar
 menu_func "CREAR NUEVO USUARIO" "\033[1;35mCREAR USUARIO TEMPORAL" "\033[1;91mREMOVER USUARIO" "BLOQUEAR O DESBLOQUEAR USUARIO" "\033[1;93mREINICIAR CONTADOR DE BLOQUEADOS y EXPIRADOS" "EDITAR USUARIO" "\033[1;92mRENOVAR USUARIO" "DETALLES DE TODOS USUARIOS" "MONITOR DE USUARIOS CONECTADOS" "ELIMINAR USUARIOS VENCIDOS" "BACKUP USUARIOS" "BANNER SSH" "\033[1;31m⚠️ELIMINAR TODOS LOS USUARIOS⚠️ \n" " -fi ${verificar} \033[1;97m🔒 LIMITADOR-DE-CUENTAS 🔒 -" " -fi ${desbloqueo} \033[1;97m🔓 DESBLOQUEO-AUTOMATICO 🔓 -" "\033[1;92mLOG DE CUENTAS REGISTRADAS" "LIMPIAR LOG DE LIMITADOR"
 [[ -e "${SCPusr}/Limiter2.log" ]] && echo -ne "$(msg -verd "  [18]") $(msg -verm2 "==>") " && msg -azu "$(fun_trans "\033[1;93mVER LOG DE LIMITADOR")"
-echo -ne "$(msg -verd "  [0]") $(msg -verm2 "==>")" && msg -bra "$(fun_trans "  VOLVER")"
+msg -bar && echo -ne "$(msg -verd "[0]") $(msg -verm2 ">") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
 msg -bar
 selection=$(selection_fun 18)
 case ${selection} in
