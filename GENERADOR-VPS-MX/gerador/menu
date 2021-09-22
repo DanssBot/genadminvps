@@ -529,9 +529,7 @@ dev="\033[0m${yellow}(#BETA)"
 dev2="\033[0m${red}(#PREMIUM)"
 case $1 in
 "ADMbot-VEN.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "=>>") " && msg -azu "BOT-USA1 VENTAS $dev2";;
-
 "openssh.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "OPENSSH $(pid_inst sshd)";;
-
 "squid.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "SQUID ---------------------------- $(pid_inst squid)";;
 "dropbear.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "DROPBEAR ------------------------- $(pid_inst dropbear)";;
 "openvpn.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "OPENVPN -------------------------- $(pid_inst openvpn)";;
@@ -572,6 +570,7 @@ case $1 in
 "panelweb.sh")return 1;; 
 "optimizar.sh")return 1;;
 "vnc")return 1;;
+"payssl.sh")return 1;;
 *)echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "${1^^} \033[1;33m($(fun_trans "No Hay Una Descripcion")!)";;
 esac
 }
