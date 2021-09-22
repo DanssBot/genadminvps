@@ -325,3 +325,7 @@ iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 
 echo -e "ps x | grep 'pythonwe' | grep -v 'grep' || screen -dmS pythonwe python proxy.py -p 80" >> /etc/autostart
 
+echo -e "                 INSTALACION CONCLUIDA "
+
+echo 
+
