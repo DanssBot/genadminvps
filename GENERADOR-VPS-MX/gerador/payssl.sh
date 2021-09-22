@@ -42,7 +42,8 @@ echo -e "\033[1;31m————————————————————�
 echo -e "\033[1;37mRequiere tener libre el puerto 80 y el 443"
 echo -e "\033[1;37mUse una VPS Nueva o Recien formateada"
 echo
-echo -e "\033[1;33m INSTALADO SSL.. "
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;33m INSTALANDO SSL.. "
 inst_ssl () {
 pkill -f stunnel4
 pkill -f stunnel
