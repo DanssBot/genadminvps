@@ -936,6 +936,12 @@ msg -bar
 [[ -e ${SCPdir}/key.txt ]] && msg -bra " KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)"
 msg -bra " CONTACTO: \033[1;31m[\033[1;32m +52 9842147259 \033[1;31m] "
 msg -bar
+echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 2.5\n"
+echo -ne "- Modificaciones en el codigo\n"
+echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 2.4\n"
+echo -ne "- Se grego Websocket\n"
+echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 2.3\n"
+echo -ne "- Se grego VNC Viewer\n"
 echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 2.2\n"
 echo -ne "- Se grego limpiar cache de sistema\n"
 echo -ne "\033[1;97m   CAMBIOS DE LA VERSION 2.1\n"
