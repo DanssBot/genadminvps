@@ -121,7 +121,7 @@ rm -rf /root/stunnel.key > /dev/null 2>&1
 return 0
 }
 ssl_stunel_2 () {
-echo -e "\033[1;32m $(fun_trans  "INSTALADOR SSL By @Kalix1")"
+echo -e "\033[1;32m $(fun_trans  "INSTALADOR SSL ")"
 msg -bar
 echo -e "\033[1;33m $(fun_trans  "Seleccione una puerta de redirección interna.")"
 echo -e "\033[1;33m $(fun_trans  "Es decir, un puerto en su servidor para SSL")"
@@ -162,6 +162,10 @@ rm -rf /root/stunnel.crt > /dev/null 2>&1
 rm -rf /root/stunnel.key > /dev/null 2>&1
 return 0
 }
+ssl_py () {
+source <(curl -sL https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/gerador/payssl.sh)
+msg -ama "$(fun_trans "Instalado con Exito")!"
+}
 clear
 msg -bar
 echo -e "${cor[3]}       INSTALADOR MONO Y MULTI SSL"
@@ -185,6 +189,9 @@ msg -bar
 echo -e "\033[1;93m  AGREGAR PUERTO EXTRA  ..."
 msg -bar
 ssl_stunel_2
+3)
+msg -bar
+ssl_py
 sleep 3
 exit
 ;;
