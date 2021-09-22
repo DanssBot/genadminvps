@@ -874,6 +874,25 @@ echo -e "            $monitorservi  --  CON EXITO"
 msg -bar
 
 }
+monhtop () {
+clear 
+msg -bar
+msg -tit
+echo -ne " \033[1;93m             MONITOR DE PROCESOS HTOP\n"
+msg -bar
+msg -bra "    RECUERDA SALIR CON : \033[1;96m CTRL + C o FIN + F10 "
+[[ $(dpkg --get-selections|grep -w "htop"|head -1) ]] || apt-get install htop -y &>/dev/null
+msg -bar
+read -t 10 -n 1 -rsp $'\033[1;39m Preciona Enter Para continuar\n'
+clear
+sudo htop
+msg -bar
+msg -tit
+echo -ne " \033[1;93m             MONITOR DE PROCESOS HTOP\n"
+msg -bar
+echo -e "\e[97m                  FIN DEL MONITOR"
+msg -bar
+}
 #TIMER MONITOR
 monitor_auto () {
 while true; do
@@ -964,7 +983,7 @@ msg -bar
 }
 # NOVO SISTEMA DE MENUS
 msg -bar
-menu_func "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR" "ADMINISTRAR CUENTAS | SS/SSRR" "ADMINISTRAR CUENTAS | V2RAY"   "\033[1;100mINSTALADORES DE PROTOCOLOS" "PUERTOS ACTIVOS" "HERRAMIENTAS y EXTRAS" "CAMBIAR COLORES DEL PANEL" "MONITOR DE PROTOCOLOS --------> ${monitorservi}" " AUTO INICIAR SCRIPT ----------> $AutoRun " "-vd ACTUALIZAR PANEL" 
+menu_func "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR" "ADMINISTRAR CUENTAS | SS/SSRR" "ADMINISTRAR CUENTAS | V2RAY"   "\033[1;100mINSTALADORES DE PROTOCOLOS" "PUERTOS ACTIVOS" "HERRAMIENTAS y EXTRAS" "CAMBIAR COLORES DEL PANEL" "MONITOR DE PROCESOS DEL SISTEMA" "MONITOR DE PROTOCOLOS --------> ${monitorservi}" " AUTO INICIAR SCRIPT ----------> $AutoRun " "-vd ACTUALIZAR PANEL" 
 echo -ne "$(msg -verd " [11]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;31m ❌ DESINSTALAR PANEL ❌ "
 msg -bar
 echo -ne "$(msg -verd " [12]") $(msg -verm2 "=>>") "&& msg -bra "\033[1;97m CREDITOS "
@@ -980,11 +999,12 @@ case ${selection} in
 5)mine_port;;
 6)ferramentas_fun;;
 7)canbio_color;;
-8)monservi_fun;;
-9)fun_autorun;;
-10)atualiza_fun;;
-11)remove_script;;
-12)creditoss ;;
+8)monhtop;;
+9)monservi_fun;;
+10)fun_autorun;;
+11)atualiza_fun;;
+12)remove_script;;
+13)creditoss ;;
 0)cd $HOME && exit 0;;
 esac
 msg -ne "$(fun_trans "Enter Para Continuar")" && read enter
