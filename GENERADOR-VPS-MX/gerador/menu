@@ -716,7 +716,8 @@ float_data "$arqs" "$Numb" && {
   }
 done
 msg -bar
-echo -ne "$(msg -verd " [0]") $(msg -verm2 "==>>") " && msg -bra "$menuTXT"
+echo -ne "$(msg -verd "[0]") $(msg -verm2 "==>>") "&& msg -bra "\033[1;41mREGRESAR AL MENU"
+#echo -ne "$(msg -verd " [0]") $(msg -verm2 "==>>") " && msg -bra "$menuTXT"
 msg -bar
 script[0]="voltar"
 selection=999
