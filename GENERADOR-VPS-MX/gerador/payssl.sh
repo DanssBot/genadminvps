@@ -319,7 +319,7 @@ screen -dmS pythonwe python proxy.py -p 80&
 
 }
 fun_bar 'inst_py'
-proxy.py
+rm -rf proxy.py
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 
