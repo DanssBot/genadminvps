@@ -1998,18 +1998,15 @@ $(msg -bar)
   ${Green_font_prefix}2.${Font_color_suffix} Actualizar ShadowsocksR
   ${Green_font_prefix}3.${Font_color_suffix} Desinstalar ShadowsocksR
   ${Green_font_prefix}4.${Font_color_suffix} Instalar libsodium (chacha20)
-â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
   ${Green_font_prefix}5.${Font_color_suffix} Verifique la informacion de la cuenta
   ${Green_font_prefix}6.${Font_color_suffix} Mostrar la informacion de conexion 
   ${Green_font_prefix}7.${Font_color_suffix} Agregar/Modificar/Eliminar la configuracion del usuario  
   ${Green_font_prefix}8.${Font_color_suffix} Modificar manualmente la configuracion del usuario
   ${Green_font_prefix}9.${Font_color_suffix} Borrar el trafico usado  
-â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
  ${Green_font_prefix}10.${Font_color_suffix} Iniciar ShadowsocksR
  ${Green_font_prefix}11.${Font_color_suffix} Detener ShadowsocksR
  ${Green_font_prefix}12.${Font_color_suffix} Reiniciar ShadowsocksR
  ${Green_font_prefix}13.${Font_color_suffix} Verificar Registro de ShadowsocksR
-â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
  ${Green_font_prefix}14.${Font_color_suffix} Otras Funciones
  ${Green_font_prefix}15.${Font_color_suffix} Actualizar Script 
 $(msg -bar)
