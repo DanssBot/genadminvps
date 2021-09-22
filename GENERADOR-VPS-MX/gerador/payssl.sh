@@ -13,7 +13,7 @@ fun_bar () {
           touch $HOME/fim
           ) > /dev/null 2>&1 &
           tput civis
-		  echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
+		  echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
           echo -ne "${col7}    ESPERE..\033[1;35m["
           while true; do
           for((i=0; i<18; i++)); do
@@ -29,7 +29,7 @@ fun_bar () {
          done
          echo -e "\033[1;35m]\033[1;37m -\033[1;32m INSTALADO !\033[1;37m"
          tput cnorm
-		 echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
+		 echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
         }
         
 
@@ -325,7 +325,6 @@ iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 
 echo -e "ps x | grep 'pythonwe' | grep -v 'grep' || screen -dmS pythonwe python proxy.py -p 80" >> /etc/autostart
 
-echo -e "                 INSTALACION CONCLUIDA "
+echo -e "\033[1;35m]\033[1;37m -\033[1;32m                 INSTALACION CONCLUIDA \033[1;37m"
 
 echo 
-
