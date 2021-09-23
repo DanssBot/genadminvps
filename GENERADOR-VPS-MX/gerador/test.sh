@@ -30,7 +30,7 @@ while true; do
    sleep 1s
    tput cuu1
    tput dl1
-   echo -ne "  \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+   echo -ne "  \033[1;33mESPERE \033[1;37m- \033[1;33m["
 done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
@@ -43,9 +43,9 @@ speedtest --share > speed
 echo ""
 clear
 echo -e "\033[0;34m======================================================\033[0m"
-echo -e " \033[1;33mSpeed Test \033[1;32m[VELOCITY] \033[0m"
+echo -e " \033[1;33mSpeed Test \033[1;32m[Admin VPS] \033[0m"
 echo -e "\033[0;34m======================================================\033[0m"
-echo -e "   \033[1;32mTESTANDO A VELOCIDADE DO SERVIDOR !\033[0m"
+echo -e "   \033[1;32mTESTIANDO LA VELOCIDAD DEL SERVIDOR !\033[0m"
 echo ""
 inst_components
 apt-get install python-pip -y  > /dev/null 2>&1
