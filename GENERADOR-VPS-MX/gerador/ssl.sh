@@ -192,6 +192,7 @@ ssl_stunel_2
 3)
 msg -bar
 ssl_py
+;;
 sleep 3
 exit
 ;;
