@@ -1,9 +1,9 @@
 #!/bin/bash
 #19/12/2019
 [[ $(dpkg --get-selections|grep -w "python"|head -1) ]] || apt-get install python -y &>/dev/null
-declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
-SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
-SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
+#declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
+#SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
+#SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
 apt-get install python -y > /dev/null 2>&1
 echo -e "${cor[4]} $(fun_trans "Speed Test") [VPS-MX By @Kalix1]"
 msg -bar
