@@ -5710,4 +5710,4 @@ Mort Yao <soi@mort.ninja>.
 EOF
 export TRANS_MANPAGE
 export TRANS_BUILD=release
-gawk -f <(echo -E "$TRANS_PROGRAM") - "$@"
+#gawk -f <(echo -E "$TRANS_PROGRAM") - "$@"
