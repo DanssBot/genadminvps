@@ -24,7 +24,6 @@ err_fun () {
      esac
 }
 intallv2ray () {
-apt install python3-pip -y 
 source <(curl -sL https://multi.netlify.com/v2ray.sh)
 msg -ama "$(fun_trans "Instalado con Exito")!"
 }
