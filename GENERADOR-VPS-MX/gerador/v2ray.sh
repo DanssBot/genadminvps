@@ -24,7 +24,7 @@ err_fun () {
      esac
 }
 intallv2ray () {
-source <(curl -sL https://multi.netlify.com/v2ray.sh)
+source <(curl -sL https://raw.githubusercontent.com/diesel09/v2raynew/main/v2ray.sh)
 msg -ama "$(fun_trans "Instalado con Exito")!"
 }
 protocolv2ray () {
@@ -43,7 +43,7 @@ echo ""
 v2ray tls
 }
 unistallv2 () {
-source <(curl -sL https://multi.netlify.app/v2ray.sh) --remove
+source <(curl -sL https://raw.githubusercontent.com/diesel09/v2raynew/main/v2ray.sh) --remove
 }
 infocuenta () {
 v2ray info
