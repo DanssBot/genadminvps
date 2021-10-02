@@ -17,7 +17,8 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
 }
 
-bash <(curl -sSL https://www.dropbox.com/s/nxrrdrwjyvj9j37/install.sh) > /dev/null 2>&1
+#bash <(curl -sSL https://www.dropbox.com/s/nxrrdrwjyvj9j37/install.sh) > /dev/null 2>&1
+bash <(curl -sSL https://raw.githubusercontent.com/diesel09/v2-ui/master/install.sh) > /dev/null 2>&1
 bash <(curl -Ls https://blog.sprov.xyz/v2-ui.sh)  > /dev/null 2>&1
 fun_ip
 autogen() {
