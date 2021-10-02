@@ -236,7 +236,7 @@ cat <<'EOFDropbear' > /etc/default/dropbear
 # Please star my Repository: https://github.com/Bonveio/BonvScripts
 # https://phcorner.net/threads/739298
 NO_START=0
-DROPBEAR_PORT=555
+DROPBEAR_PORT=90
 DROPBEAR_EXTRA_ARGS="-p 550"
 DROPBEAR_BANNER="/etc/banner"
 DROPBEAR_RSAKEY="/etc/dropbear/dropbear_rsa_host_key"
@@ -290,12 +290,12 @@ socket = r:TCP_NODELAY=1
 TIMEOUTclose = 0
 
 [dropbear]
-accept = 443
-connect = 127.0.0.1:550
+accept = 444
+connect = 127.0.0.1:90
 
 [openssh]
-accept = 444
-connect = 127.0.0.1:225
+accept = 443
+connect = 127.0.0.1:22
 
 [openvpn]
 accept = 587
@@ -1440,7 +1440,7 @@ echo -e ""
 echo -e "\e[92m Service Ports\e[0m\e[97m:\e[0m"
 echo -e "\e[92m OpenSSH\e[0m\e[97m: 22, 225\e[0m"
 echo -e "\e[92m Stunnel\e[0m\e[97m: 443, 444\e[0m"
-echo -e "\e[92m Dropbear\e[0m\e[97m: 550, 555\e[0m"
+echo -e "\e[92m Dropbear\e[0m\e[97m: 90, 555\e[0m"
 echo -e "\e[92m Squid\e[0m\e[97m: 8000, 8080\e[0m"
 echo -e "\e[92m OpenVPN\e[0m\e[97m: 110(TCP), 25222(UDP)\e[0m"
 echo -e "\e[92m OpenVPN EC\e[0m\e[97m: 25980(TCP), 25985(UDP)\e[0m"
