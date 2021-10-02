@@ -219,7 +219,7 @@ ClientAliveCountMax 2
 UseDNS no
 EOFOpenSSH
 
-curl -4skL "https://raw.githubusercontent.com/Bonveio/BonvScripts/master/sshsslbanner.txt" -o /etc/banner
+curl -4skL "https://raw.githubusercontent.com/diesel09/genmx8.3/master/sshsslbanner.txt" -o /etc/banner
 
 sed -i '/password\s*requisite\s*pam_cracklib.s.*/d' /etc/pam.d/common-password && sed -i 's|use_authtok ||g' /etc/pam.d/common-password
 
