@@ -388,7 +388,7 @@ msg -bar
 read -p "Enter"
 }
 atualizar_geb () {
-wget -O $HOME/instger.sh https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/instgerador.sh &>/dev/null
+wget -O $HOME/instger.sh https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/instgerador.sh &>/dev/null
 chmod +x $HOME/instger.sh
 cd $HOME
 ./instger.sh
@@ -396,7 +396,7 @@ rm $HOME/instger.sh &>/dev/null
 }
 bot_menu () {
 CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
-[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/diesel09/vpsbotchumo2.0/main/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
+[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/DanssBot/vpsbotchumo2.1/main/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
 sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
 source ${CIDdir}/confbot.sh
 bot_conf
