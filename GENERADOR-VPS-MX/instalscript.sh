@@ -45,13 +45,13 @@ if [ ! -d "$INSTALL_DIR" ]; then
 	sleep 2
 	mkdir -p "$INSTALL_DIR_PARENT"
 	cd "$INSTALL_DIR_PARENT"
-    wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/zzupdate.default.conf -O /usr/local/vpsmxup/vpsmxup.default.conf  &> /dev/null
+    wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/zzupdate.default.conf -O /usr/local/vpsmxup/vpsmxup.default.conf  &> /dev/null
 	#chmod +x /usr/local/vpsmxup/vpsmxup.default.conf 
 	rm -rf /usr/local/vpsmxup/vpsmxup.sh
-    wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/zzupdate.sh -O /usr/local/vpsmxup/vpsmxup.sh &> /dev/null
+    wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/zzupdate.sh -O /usr/local/vpsmxup/vpsmxup.sh &> /dev/null
 	chmod +x /usr/local/vpsmxup/vpsmxup.sh
 	rm -rf /usr/bin/vpsmxup
-    wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/zzupdate.sh -O /usr/bin/vpsmxup &> /dev/null
+    wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/zzupdate.sh -O /usr/bin/vpsmxup &> /dev/null
 	chmod +x /usr/bin/vpsmxup
 	echo -e  "\033[1;97m              Copiando Instalador Interno "
 	
