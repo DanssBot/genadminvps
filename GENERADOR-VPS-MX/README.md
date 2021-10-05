@@ -15,7 +15,7 @@
 
 ## Installation Generador
 
-apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/instgerador.sh; chmod 777 instgerador.sh* && ./instgerador.sh*
+apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/instgerador.sh; chmod 777 instgerador.sh* && ./instgerador.sh*
 
 ```
 PARA INGRESAR AL GENERADOR ESCRIBE LOS COMANDOS EN MINUSCULA  gerar.sh o gerar
