@@ -27,7 +27,7 @@ PARA INGRESAR AL GENERADOR ESCRIBE LOS COMANDOS EN MINUSCULA  gerar.sh o gerar
 
 ![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/blob/master/GENERADOR-VPS-MX/Imagenes/Install-scripts.png)
 
-sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
+sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
 
 -------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/diese
 
 ![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/blob/master/GENERADOR-VPS-MX/Imagenes/Updatekey.png)
 
-apt-get update -y; apt-get upgrade -y; wget  https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/GENERADOR-VPS-MX/attgerador.sh; chmod 777 attgerador.sh* && ./attgerador.sh*
+apt-get update -y; apt-get upgrade -y; wget  https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUT/PROYECTOS_DESCONTINUADOS/master/GENERADOR-VPS-MX/attgerador.sh; chmod 777 attgerador.sh* && ./attgerador.sh*
 
 -------------------------------------------------------------------------------
 
