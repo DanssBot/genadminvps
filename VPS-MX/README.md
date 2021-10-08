@@ -16,7 +16,7 @@ UPDATE 02/04/2021
 
 ## :book: Installation
 
-sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX/main/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
+sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/VPS-MX/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
 
 ## :book: Installation Alternativo
 
