@@ -88,11 +88,11 @@ sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf
 service apache2 restart > /dev/null 2>&1 &
 IVAR2="/etc/key-gerador"
 echo "$Key" > $IVAR2
-cp $HOME/lista-arq /etc/gerador
-cp /bin/http-server.sh /etc/gerador
-mv /etc/gerador/http-server.sh /etc/gerador/http-server.py
-mv gerar.sh /etc/gerador
-cd /etc/gerador
+cp $HOME/lista-arq /etc/SCRIPT
+cp /bin/http-server.sh /etc/SCRIPT
+mv /etc/SCRIPT/http-server.sh /etc/SCRIPT/http-server.py
+mv gerar.sh /etc/SCRIPT
+cd /etc/SCRIPT
 rm -rf FERRAMENTA KEY KEY! INVALIDA!
 rm $HOME/lista-arq
 sed -i -e 's/\r$//' /usr/bin/gerar.sh
