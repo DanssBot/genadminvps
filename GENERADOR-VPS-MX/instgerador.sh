@@ -88,6 +88,9 @@ sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf
 service apache2 restart > /dev/null 2>&1 &
 IVAR2="/etc/key-gerador"
 echo "$Key" > $IVAR2
+cp /usr/bin/gerar.sh /etc/SCRIPT
+cd /etc/SCRIPT
+rm -rf FERRAMENTA KEY KEY! INVALIDA!
 rm $HOME/lista-arq
 sed -i -e 's/\r$//' /usr/bin/gerar.sh
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
