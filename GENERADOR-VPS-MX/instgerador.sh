@@ -57,7 +57,7 @@ function_verify () {
   exit 1
   } || {
   ### INTALAR VERCION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/Vercion")
+  v1=$(curl -sSL "https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/gerador")
   echo "$v1" > /etc/versin_script
   }
 }
