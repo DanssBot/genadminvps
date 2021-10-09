@@ -57,7 +57,7 @@ function_verify () {
   exit 1
   } || {
   ### INTALAR VERCION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/DanssBot/script/master/Install/httpserver")
+  v1=$(curl -sSL "https://www.dropbox.com/s/blxo0jifysvyrey/v-new.log")
   echo "$v1" > /etc/versin_script
   }
 }
@@ -90,6 +90,7 @@ IVAR2="/etc/key-gerador"
 echo "$Key" > $IVAR2
 cp /bin/http-server.sh /etc/SCRIPT
 mv /etc/SCRIPT/http-server.sh /etc/SCRIPT/http-server.py
+wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/gerador/gerar.sh &>/dev/null
 cp /usr/bin/gerar.sh /etc/SCRIPT
 cd /etc/SCRIPT
 rm -rf FERRAMENTA KEY KEY! INVALIDA!
