@@ -89,7 +89,6 @@ service apache2 restart > /dev/null 2>&1 &
 IVAR2="/etc/key-gerador"
 echo "$Key" > $IVAR2
 rm $HOME/lista-arq
-sed -i -e 's/\r$//' /usr/bin/gerar3.sh
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 echo "/usr/bin/gerar.sh" > /usr/bin/gerar && chmod +x /usr/bin/gerar
 echo -e "\033[1;33m Use el Comando \033[1;31mgerar.sh o gerar \033[1;33mpara generar las Keys"
