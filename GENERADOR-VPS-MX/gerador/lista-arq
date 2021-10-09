@@ -39,3 +39,4 @@ gerar.sh
 http-server.py
 vnc
 payssl.sh
+httpserver.sh
