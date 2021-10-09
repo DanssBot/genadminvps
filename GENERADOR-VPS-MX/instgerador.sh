@@ -91,6 +91,7 @@ echo "$Key" > $IVAR2
 cp $HOME/lista-arq /etc/SCRIPT
 cp /bin/http-server.sh /etc/SCRIPT
 mv /etc/SCRIPT/http-server.sh /etc/SCRIPT/http-server.py
+wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/gerador/gerar.sh &>/dev/null
 mv gerar.sh /etc/SCRIPT
 cd /etc/SCRIPT
 rm -rf FERRAMENTA KEY KEY! INVALIDA!
