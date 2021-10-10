@@ -7,7 +7,6 @@ SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/ger-user"
 SCPfrm="/etc/ger-frm"
 SCPinst="/etc/ger-inst"
-fecha=`date`;
 #echo "nameserver 8.8.8.8" > /etc/resolv.conf
 #echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 service apache2 restart > /dev/null 2>&1
@@ -34,8 +33,8 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
 ### PAQUETES PRINCIPALES 
 msg -bar
 echo -e "\033[97m"
-echo -e "\033[41m -- INSTALACION DE PAQUETES NECESARIOS -- "
-echo -e "\033[100m  PRESTE ATENCION A LA SIGUIENTE PREGUNTA"
+echo -e "\033[41m -- INSTALACION DE PAQUETES NECESARIOS PARA VPS-MX -- "
+echo -e "\033[100m  PONER ATENCION A INSTALACION PARA SIGUIENTE PREGUNTA"
 echo -e "\033[97m"
 msg -bar
 #grep
@@ -175,7 +174,7 @@ sleep 7s
 clear
 }
 msg -bar2
-echo -e "\033[1;97m  ¿PRESENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
+echo -e "\033[1;97m  ¿PRECENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
 msg -bar2
 echo -e "\033[1;32m 1- Escoja:(N) No. Para Instalacion Normal"
 echo -e "\033[1;31m 2- Escoja:(S) Si. Saltaron errores."
@@ -192,15 +191,15 @@ MIP2=$(wget -qO- ifconfig.me)
 }  
 function_verify () {
   ### INTALAR VERCION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/Vercion")
-  echo "$v1" > /etc/versin_script_new
+  v1=$(curl -sSL "https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/GENERADOR-VPS-MX/Install/Vercion")
+  echo "$v1" > /etc/versin_script
   [[ ! -e /usr/local/lib/lsystembin2 ]] && touch /usr/local/lib/lsystembin2
  
 }
 funcao_idioma () {
 msg -bar2
-figlet " ADMIN VPS " | lolcat 
-echo -e "     Adquiera su serial y apoye al desarrollador"
+figlet "    -VPS MX-" | lolcat 
+echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL"
 msg -bar2
 pv="$(echo es)"
 [[ ${#id} -gt 2 ]] && id="es" || id="$pv"
@@ -217,7 +216,7 @@ wget -O /bin/rebootnb https://www.dropbox.com/s/4zsc3vfn5d9oi36/rebootnb &> /dev
 chmod +x /bin/rebootnb 
 wget -O /bin/resetsshdrop https://www.dropbox.com/s/244tj0ffe62hq4l/resetsshdrop &> /dev/null
 chmod +x /bin/resetsshdrop
-wget -O /etc/versin_script_new https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/Vercion &>/dev/null
+wget -O /etc/versin_script_new https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/GENERADOR-VPS-MX/Install/Vercion &>/dev/null
 msg -bar2
 echo '#!/bin/sh -e' > /etc/rc.local
 sudo chmod +x /etc/rc.local
@@ -227,30 +226,22 @@ echo "sleep 2s" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
 /bin/cp /etc/skel/.bashrc ~/
 echo 'clear' >> .bashrc
-echo 'DATE=$(date +"%d-%m-%y")' >> .bashrc
-echo 'TIME=$(date +"%T")' >> .bashrc
 echo 'echo ""' >> .bashrc
-echo 'echo -e "\033[91m     _    ____  __  __ ___ _   _  __     ______  ____  " '>> .bashrc
-echo 'echo -e "\033[91m    / \  |  _ \|  \/  |_ _| \ | | \ \   / /  _ \/ ___|  " '>> .bashrc
-echo 'echo -e "\033[91m   / _ \ | | | | |\/| || ||  \| |  \ \ / /| |_) \___ \  " '>> .bashrc
-echo 'echo -e "\033[91m  / ___ \| |_| | |  | || || |\  |   \ V / |  __/ ___) |  " '>> .bashrc
-echo 'echo -e "\033[91m /_/   \_\____/|_|  |_|___|_| \_|    \_/  |_|   |____/  " '>> .bashrc
+echo 'echo -e "\033[91m      __     ______  ____        __  ____  __ " '>> .bashrc
+echo 'echo -e "\033[91m      \ \   / /  _ \/ ___|      |  \/  \ \/ / " '>> .bashrc
+echo 'echo -e "\033[91m       \ \ / /| |_) \___ \ _____| |\/| |\  /  " '>> .bashrc
+echo 'echo -e "\033[91m        \ V / |  __/ ___) |_____| |  | |/  \  " '>> .bashrc
+echo 'echo -e "\033[91m         \_/  |_|   |____/      |_|  |_/_/\_\ " '>> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
-#echo 'echo -e "\033[92m        VERSION : $ver "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
-echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA:  menu / adm "'>> .bashrc
-echo 'ver="$(cat /etc/versin_script)" '>> .bashrc
-#echo 'wget -O /etc/versin_script https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/Vercion &>/dev/null'>> .bashrc
-echo 'echo ""'>> .bashrc
-echo 'echo -e "	\e[44;1;37mNombre del Servidor\e[0m : \e[1;33m $HOSTNAME \e[0m"' >> .bashrc
-echo 'echo -e "	\e[44;1;37mFecha del Servidor\e[0m : \e[1;33m $DATE \e[0m"' >> .bashrc
-echo 'echo -e "	\e[44;1;37mHora del Servidor\e[0m : \e[1;33m $TIME \e[0m"' >> .bashrc
+echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA:  sudo menu "'>> .bashrc
+echo 'wget -O /etc/versin_script_new https://www.dropbox.com/s/xi3kfu39eawuvoc/Vercion &>/dev/null'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
-echo -e "\033[1;41m                     menu / adm                    \033[0;37m" && msg -bar2
+echo -e "\033[1;41m                     sudo menu                        \033[0;37m" && msg -bar2
 sleep 5
 exit
 }
@@ -295,9 +286,7 @@ case $1 in
 "Shadowsocks-libev.sh")ARQ="${SCPinst}/";; #Instalacao
 "Shadowsocks-R.sh")ARQ="${SCPinst}/";; #Instalacao 
 "v2ray.sh")ARQ="${SCPinst}/";; #Instalacao
-"v2ui.sh")ARQ="${SCPinst}/";; #Instalacao
 "budp.sh")ARQ="${SCPinst}/";; #Instalacao
-"trojanserver.sh")ARQ="${SCPinst}/";; #Instalacao
 "sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py")ARQ="${SCPinst}/";; #Instalacao
 *)ARQ="${SCPfrm}/";; #Ferramentas
 esac
@@ -344,7 +333,7 @@ chmod +x /bin/monitor.sh
 wget -O /var/www/html/estilos.css https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/Monitor-Service/estilos.css &> /dev/null
 msg -bar2
 msg -bar2
-msg -ama "      [ ADMIN VPS - SCRIPT \033[1;97m ADMIN VPS\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
 msg -ama "  \033[1;96m      🔰Usar Ubuntu 18 a 64 De Preferencia🔰 "
 msg -bar2
 [[ $1 = "" ]] && funcao_idioma || {
@@ -378,8 +367,7 @@ function_verify
 updatedb
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
-   msg -ama "$(source trans -b pt:${id} "GRACIAS POR ADQUIRIR TU SERIAL"|sed -e 's/[^a-z -]//ig'): ADMIN VPS\033[1;31m[]"
-   [[ -e ${SCPdir}/key.txt ]] && msg -bra "SU KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)" 
+   msg -ama "$(source trans -b pt:${id} "BEM VINDO, OBRIGADO POR UTILIZAR"|sed -e 's/[^a-z -]//ig'): \033[1;31m[VPS-MX]"
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
@@ -402,12 +390,12 @@ if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") 
    echo "$Key" > ${SCPdir}/key.txt
    [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}   
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma}
-   #echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"
-   #echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @Noti_VPSMX_Bot)"
-   #msg -bar2
-   #read -p " [ s | n ]: " NOTIFY   
-   #[[ "$NOTIFY" = "s" || "$NOTIFY" = "S" ]] && NOTIFY
-   #msg -bar2
+   echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"
+   echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @Noti_VPSMX_Bot)"
+   msg -bar2
+   read -p " [ s | n ]: " NOTIFY   
+   [[ "$NOTIFY" = "s" || "$NOTIFY" = "S" ]] && NOTIFY
+   msg -bar2
    [[ ${byinst} = "true" ]] && install_fim
 else
 invalid_key
