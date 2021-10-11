@@ -29,12 +29,12 @@ clear
 	sleep 2
 
 ubu16_fun () {
-    wget -O /etc/apt/sources.list https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUT/VPS-MX/main/VPS-MX_Oficial/Repositorios/16.04/sources.list &> /dev/null
+    wget -O /etc/apt/sources.list https://raw.githubusercontent.com/DanssBot/VPSMX8.4x/master/NEW-ULTIMATE-VPS-MX-8.0/VPS-MX-Oficial/Install/Repositorios/16.04/sources.list &> /dev/null
 	echo -e "\033[1;97m SELECCIONO UBU 16"
 }
 
 ubu18_fun () {
-    wget -O /etc/apt/sources.list https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUT/VPS-MX/main/VPS-MX_Oficial/Repositorios/18.04/sources.list &> /dev/null
+    wget -O /etc/apt/sources.list https://raw.githubusercontent.com/DanssBot/VPSMX8.4x/master/NEW-ULTIMATE-VPS-MX-8.0/VPS-MX-Oficial/Install/Repositorios/18.04/sources.list &> /dev/null
 	echo -e "\033[1;97m OK UBU 18"
 }	
 
