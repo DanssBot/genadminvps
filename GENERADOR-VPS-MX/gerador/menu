@@ -121,7 +121,7 @@ echo "${texto[$@]}"
 fi
 }
 atualiza_fun () {
-wget wget https://raw.githubusercontent.com/diesel09/mxvps/master/vps-mx-free/instalscript.sh; chmod 777 instalscript.sh; ./instalscript.sh
+wget wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/instalscript.sh; chmod 777 instalscript.sh; ./instalscript.sh
 msg -bar2
 }
 funcao_idioma () {
