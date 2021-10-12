@@ -198,7 +198,7 @@ function_verify () {
 }
 funcao_idioma () {
 msg -bar2
-figlet "    -VPS MX-" | lolcat 
+figlet "    ADMIN VPS" | lolcat 
 echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL"
 msg -bar2
 pv="$(echo es)"
@@ -212,9 +212,9 @@ rm -rf /etc/newadm/ger-user/nombre.log &>/dev/null
 [[ $(find /etc/newadm/ger-user -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/newadm/ger-user/IDT.log https://www.dropbox.com/s/vzsacahfbwwm0ow/IDT.log &>/dev/null
 [[ $(find /etc/newadm/ger-user -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/newadm/ger-user/tiemlim.log https://www.dropbox.com/s/kkchh0ldtdt2yza/tiemlim.log &>/dev/null
 
-wget -O /bin/rebootnb https://www.dropbox.com/s/4zsc3vfn5d9oi36/rebootnb &> /dev/null
+wget -O /bin/rebootnb https://raw.githubusercontent.com/DanssBot/genadminvps/master/VPS-MX/Install/ArchivosUtilitarios/rebootnb &> /dev/null
 chmod +x /bin/rebootnb 
-wget -O /bin/resetsshdrop https://www.dropbox.com/s/244tj0ffe62hq4l/resetsshdrop &> /dev/null
+wget -O /bin/resetsshdrop https://raw.githubusercontent.com/DanssBot/genadminvps/master/VPS-MX/Install/ArchivosUtilitarios/resetsshdrop &> /dev/null
 chmod +x /bin/resetsshdrop
 wget -O /etc/versin_script_new https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Install/Vercion &>/dev/null
 msg -bar2
