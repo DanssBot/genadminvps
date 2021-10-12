@@ -200,10 +200,10 @@ funcao_idioma () {
 msg -bar2
 echo -e "\033[1;97m  ¿ESCRIBE UN NOMBRE?"
  msg -bar
-echo -e "\033[1;96m DIGITE NUEVA CONTRASEÑA:\033[0;37m"; read -p " " figlet
-(echo $figlet; echo $fitglet)|passwd root 2>/dev/null
+echo -e "\033[1;96m DIGITE UN NOMBRE:\033[0;37m"; read -p " " figlet
+(echo $figlet; echo $fitglet)|locat >/dev/null
 sleep 1s
-echo -e "\033[97m      CONTRASEÑA AGREGADA O EDITADA CORECTAMENTE"
+echo -e "\033[97m      AGREGADA CORECTAMENTE"
 echo -e "\033[97m SU CONTRASEÑA AHORA ES: \e[41m $figlet \033[0;37m"
 figlet "    DARINEL" | lolcat 
 echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL"
