@@ -205,7 +205,7 @@ echo -e "\033[1;96m DIGITE UN NOMBRE:\033[0;37m"; read -p " " figlet
 sleep 1s
 echo -e "\033[97m      AGREGADA CORECTAMENTE"
 echo -e "\033[97m SU CONTRASEÑA AHORA ES: \e[41m $figlet \033[0;37m"
-figlet "    DARINEL" | lolcat 
+figlet "    " | lolcat 
 echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL"
 msg -bar2
 pv="$(echo es)"
