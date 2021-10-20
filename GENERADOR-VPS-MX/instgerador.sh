@@ -1,7 +1,7 @@
 #!/bin/bash
 IVAR="/etc/http-instas"
 SCPT_DIR="/etc/SCRIPT"
-SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RpZXNlbDA5L2dlbm14OC4zL21hc3Rlci9HRU5FUkFET1ItVlBTLU1YL2dlcmFkb3I="
+SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FBQUFBRVhRT1N5SXBOMkpaMGVoVVEvUFJPWUVDVE9TX0RFU0NPTlRJTlVBRE9TL21hc3Rlci9HRU5FUkFET1ItVlBTLU1YL2dlcmFkb3I="
 SUB_DOM='base64 -d'
 rm $(pwd)/$0
 ofus () {
@@ -46,23 +46,8 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
 echo "$IP" > /usr/bin/vendor_code
 }
-function_verify () {
-  permited=$(curl -sSL "https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/Control-IP")
-  [[ $(echo $permited|grep "${IP}") = "" ]] && {
-  echo -e "\n\n\n\033[1;31m====================================================="
-  echo -e "\033[1;31m       ¡LA IP $(wget -qO- ipv4.icanhazip.com) NO ESTA AUTORIZADA!"
-  echo -e "\033[1;31m                CONTACTE A @vpspremium_com_mx"
-  echo -e "\033[1;31m=====================================================\n\n\n"
-  [[ -d /etc/SCRIPT ]] && rm -rf /etc/SCRIPT
-  exit 1
-  } || {
-  ### INTALAR VERCION DE SCRIPT
-  v1=$(curl -sSL "https://www.dropbox.com/s/blxo0jifysvyrey/v-new.log")
-  echo "$v1" > /etc/versin_script
-  }
-}
 meu_ip
-echo -e "\033[1;33mInstalando Archivos... "
+echo -e "\033[1;33mInstalando Arquivos... "
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 cd $HOME
 REQUEST=$(echo $SCPresq|$SUB_DOM)
@@ -70,9 +55,9 @@ wget -O "$HOME/lista-arq" ${REQUEST}/GERADOR > /dev/null 2>&1
 sleep 1s
 [[ -e $HOME/lista-arq ]] && {
 for arqx in `cat $HOME/lista-arq`; do
-echo -ne "\033[1;33mDescargando Archivo \033[1;31m[$arqx] "
+echo -ne "\033[1;33mBaixando Arquivo \033[1;31m[$arqx] "
 wget -O $HOME/$arqx ${REQUEST}/${arqx} > /dev/null 2>&1 && {
-echo -e "\033[1;31m- \033[1;32mDescargado con exito!"
+echo -e "\033[1;31m- \033[1;32mRecebido Com Sucesso!"
 [[ -e $HOME/$arqx ]] && veryfy_fun $arqx
 } || echo -e "\033[1;31m- \033[1;31mFalha (nao recebido!)"
 done
@@ -88,20 +73,17 @@ sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf
 service apache2 restart > /dev/null 2>&1 &
 IVAR2="/etc/key-gerador"
 echo "$Key" > $IVAR2
-# cp $HOME/lista-arq /etc/SCRIPT
 cp /bin/http-server.sh /etc/SCRIPT
 mv /etc/SCRIPT/http-server.sh /etc/SCRIPT/http-server.py
-chmod +x /etc/SCRIPT/http-server.py
-wget https://raw.githubusercontent.com/DanssBot/genadminvps/master/GENERADOR-VPS-MX/gerador/gerar.sh &>/dev/null
-mv gerar.sh /etc/SCRIPT
-chmod +x /etc/SCRIPT/gerar.sh
-cd /etc/SCRIPT/
+cp /usr/bin/gerar.sh /etc/SCRIPT
+cd /etc/SCRIPT
 rm -rf FERRAMENTA KEY KEY! INVALIDA!
 rm $HOME/lista-arq
 sed -i -e 's/\r$//' /usr/bin/gerar.sh
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 echo "/usr/bin/gerar.sh" > /usr/bin/gerar && chmod +x /usr/bin/gerar
-echo -e "\033[1;33m Use el Comando \033[1;31mgerar.sh o gerar \033[1;33mpara generar las Keys"
+echo -e "\033[1;33m Perfeito, Use o Comando \033[1;31mgerar.sh o gerar \033[1;33mpara Gerenciar as Suas Keys e
+ Atualizar a Base do servidor"
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
 } || {
 echo -e "\033[1;36m--------------------------------------------------------------------\033[0m"
